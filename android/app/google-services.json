@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "138795580803",
+    "firebase_url": "https://valoguide.firebaseio.com",
+    "project_id": "valoguide",
+    "storage_bucket": "valoguide.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:138795580803:android:4109b4f5ddc4d571590ab6",
+        "android_client_info": {
+          "package_name": "com.Valoguide"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "138795580803-i44tsmcnmkrop8fm3gqm2n79mhm6ggtg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBT0PSl1PgDq4SwuSnACt7tIyVdQiw9JiE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "138795580803-i44tsmcnmkrop8fm3gqm2n79mhm6ggtg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,3 +1,4 @@
+import 'package:Valoguide/views/news_view/post_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:Valoguide/core/constants/data.dart';
@@ -38,6 +39,12 @@ class RouteGenerator {
         if (routArgument.agentArguments is AgentArguments) {
           return MaterialPageRoute(
               builder: (_) => AgentDetails(args: routArgument.agentArguments));
+        }
+        return _errorRoute();
+      case '/postDetails':
+        if (routArgument.postArgument is PostArgument) {
+          return MaterialPageRoute(
+              builder: (_) => PostDetails(args: routArgument.postArgument));
         }
         return _errorRoute();
       case '/weaponDetails':

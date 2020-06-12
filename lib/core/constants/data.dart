@@ -18,10 +18,18 @@ class MapArguments {
   MapArguments(this.mapIndex, this.mapColor, this.mapSide);
 }
 
+class PostArgument {
+  final String postTitle;
+  final String postContent;
+
+  PostArgument(this.postTitle, this.postContent);
+}
+
 class RoutArgument {
   WeaponArguments weaponArguments;
   AgentArguments agentArguments;
   MapArguments mapArguments;
+  PostArgument postArgument;
 }
 
 List<String> agentsImages = [
@@ -38,7 +46,7 @@ List<String> agentsImages = [
   "assets/images/agents/port/brimstone_port.jpg",
 ];
 
-List<String> agentClass = ['Initiatior', 'Duelist', 'Controller', 'Sentinel'];
+List<String> agentClass = ['Initiator', 'Duelist', 'Controller', 'Sentinel'];
 
 List<String> agentNames = [
   "Breach",

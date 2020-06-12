@@ -9,8 +9,7 @@ class NewsListModel extends Model {
 
   Future getPosts() async {
     viewState = ViewState.Busy;
-    NewsService postService = NewsService();
-    List<Post> tempPostsList = await postService.fetchPosts();
+    List<Post> tempPostsList = await NewsService.fetchPosts();
     _postList = (tempPostsList != null) ? tempPostsList : _postList;
     viewState = ViewState.Idle;
     notifyListeners();
@@ -53,31 +52,10 @@ class NewsListModel extends Model {
 }
 
 class Post {
-  int postId;
-  int userId;
-  String title;
-  String body;
+  final String title;
+  final String date;
+  final String content;
 
-  Post({this.postId, this.title, this.body, this.userId});
-
-  Post.fromJson(Map<String, dynamic> json) {
-    userId = json['userId'];
-    postId = json['id'];
-    title = json['title'];
-    body = json['body'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['userId'] = this.userId;
-    data['id'] = this.postId;
-    data['title'] = this.title;
-    data['body'] = this.body;
-    return data;
-  }
-
-//  @override
-  dispose() {
-    // TODO: disconnect, Stop Stream, hardware API etc
-  }
+  Post({this.title, this.date, this.content});
+  Post.construct(this.title, this.date, this.content);
 }

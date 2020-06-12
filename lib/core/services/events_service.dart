@@ -7,40 +7,70 @@ import 'package:html/dom.dart';
 // Contains DOM related classes for extracting data from elements
 
 class EventsService {
-  static var client = http.Client();
-  static List<Event> _eventsList = [];
-  static const endpoint = 'https://liquipedia.net/valorant/Show_Matches';
-
   static Future fetchEvents() async {
-    try {
-      http.Response response = await client.get(endpoint);
+    var client = http.Client();
+    http.Response response = await client.get('https://www.thespike.gg/events');
 
-      if (response.statusCode != 200) return response.body;
+    if (response.statusCode != 200) return response.body;
 
-      var document = parse(response.body);
+    var document = parse(response.body);
+    var events = <Event>[];
 
-      List<Element> divRows = document.querySelectorAll('.divRow');
-      List<Element> divCells;
+    List<Element> eventsSections =
+        document.querySelectorAll('.events-list-overview');
+    List<Element> eventsRows = [
+      ...eventsSections[0]
+          .querySelectorAll('.standard-event , .featured-event'),
+      ...eventsSections[1].querySelectorAll('.standard-event , .featured-event')
+    ];
+    Element eventsItem;
+//    print(eventsRows.length);
+    var title = '';
+    var logo = '';
+    Element locationElement;
+    var date = '';
+    var prize = '';
+    var location = '';
+    List<String> teams = [];
+    List<Element> teamsList;
 
-      for (var divRow in divRows) {
-        divCells = divRow.querySelectorAll('.divCell');
-        Event tempEvent = new Event.construct(
-            divCells[0].text,
-            divCells[1].text,
-            divCells[2].text,
-            divCells[3].text,
-            divCells[4].text);
-        _eventsList.add(tempEvent);
-//        setNetState(NetworkState.on);
+    for (var eventsRow in eventsRows) {
+      eventsItem = eventsRow.querySelector('.item');
+      // print(eventsItem);
+      title = eventsItem.querySelector('.info-content > h2')?.text;
+      date = eventsItem.querySelector('.event-date')?.text;
+      prize = eventsItem.querySelector('.amount')?.text;
+      logo = eventsItem.querySelector('.event-fixed-logo').attributes['src'];
+      locationElement = eventsItem.querySelector('.event-location');
+      location = (locationElement != null)
+          ? locationElement
+              .querySelector('.flag-icon')
+              .attributes['class']
+              .replaceAll('flag-icon', '')
+              .replaceAll('-', '')
+              .toUpperCase()
+          : '';
+      teamsList = eventsItem.querySelectorAll('.small-team-logo > img');
+      teams = [];
+      for (var teamNode in teamsList) {
+        teams.add(teamNode.attributes['src']);
       }
-//      client.close();
-    } on SocketException catch (e) {
-//      setNetState(NetworkState.off);
-      print(e);
+
+      events.add(new Event(
+          title: title,
+          date: date,
+          prize: prize,
+          location: location,
+          logo: logo,
+          teams: teams));
     }
-    if (_eventsList.length > 0)
-      return _eventsList;
-    else
-      return null;
+    events.forEach((event) {
+      print(
+          "${event.title},${event.date},${event.prize},${event.location},${event.logo},${[
+        ...event.teams
+      ]}");
+    });
+
+    return events;
   }
 }

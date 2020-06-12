@@ -2,7 +2,7 @@ import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_config/flutter_config.dart';
 
-const String TestAppId = "ca-app-pub-3940256099942544~3347511713";
+//const String TestAppId = "ca-app-pub-3940256099942544~3347511713";
 
 class Ads {
   static BannerAd bannerAd;
@@ -12,28 +12,29 @@ class Ads {
   static bool interstitialIsShown = false;
   static bool interstitialIsGoingToBeShown = false;
   static void initialize() {
-    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+//    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
     // TODO : USE a .env file to extract AdMobAppId
-//    FirebaseAdMob.instance.initialize(
-//      appId: FlutterConfig.get("ADMOB_APP_ID"),
-//    );
+    FirebaseAdMob.instance.initialize(
+      appId: FlutterConfig.get("ADMOB_APP_ID"),
+    );
   }
 
   static const MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
     keywords: adMobKeyWords,
     contentUrl: 'https://www.forbes.com',
     childDirected: false,
-    testDevices: TestAppId != null
-        ? [TestAppId]
-        : null, // Android emulators are considered test devices
+
+//    testDevices: TestAppId != null
+//        ? [TestAppId]
+//        : null, // Android emulators are considered test devices
   );
 
   static _createBannerAd() {
     bannerAd = BannerAd(
       // TODO : Replace the testAdUnitId with an ad unit id from the AdMob dash.
 
-      adUnitId: BannerAd.testAdUnitId,
-//      adUnitId: FlutterConfig.get("BANNER_AD_UNIT"),
+//      adUnitId: BannerAd.testAdUnitId,
+      adUnitId: FlutterConfig.get("BANNER_AD_UNIT"),
       size: AdSize.banner,
       targetingInfo: targetingInfo,
       listener: (MobileAdEvent event) {
@@ -72,8 +73,8 @@ class Ads {
   static _createInterstitialAd() {
     interstitialAd = InterstitialAd(
         // TODO : Replace the testAdUnitId with an ad unit id from the AdMob dash.
-//        adUnitId: FlutterConfig.get("INTERSTITIAL_AD_UNIT"),
-        adUnitId: InterstitialAd.testAdUnitId,
+        adUnitId: FlutterConfig.get("INTERSTITIAL_AD_UNIT"),
+//        adUnitId: InterstitialAd.testAdUnitId,
         targetingInfo: targetingInfo,
         listener: (MobileAdEvent event) {
           if (event == MobileAdEvent.loaded) {

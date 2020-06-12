@@ -51,9 +51,16 @@ class Event {
   final String date;
   final String prize;
   final String location;
-  final String winner;
+  final String logo;
+  final List<String> teams;
 
-  Event({this.title, this.date, this.prize, this.location, this.winner});
+  Event(
+      {this.title,
+      this.date,
+      this.prize,
+      this.location,
+      this.logo,
+      this.teams});
   Event.construct(
-      this.title, this.date, this.prize, this.location, this.winner);
+      this.title, this.date, this.prize, this.location, this.logo, this.teams);
 }
