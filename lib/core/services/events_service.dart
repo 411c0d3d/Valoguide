@@ -24,7 +24,6 @@ class EventsService {
       ...eventsSections[1].querySelectorAll('.standard-event , .featured-event')
     ];
     Element eventsItem;
-//    print(eventsRows.length);
     var title = '';
     var logo = '';
     Element locationElement;
@@ -64,12 +63,12 @@ class EventsService {
           logo: logo,
           teams: teams));
     }
-    events.forEach((event) {
-      print(
-          "${event.title},${event.date},${event.prize},${event.location},${event.logo},${[
-        ...event.teams
-      ]}");
-    });
+//    events.forEach((event) {
+//      print(
+//          "${event.title},${event.date},${event.prize},${event.location},${event.logo},${[
+//        ...event.teams
+//      ]}");
+//    });
 
     return events;
   }

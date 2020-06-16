@@ -21,7 +21,7 @@ class _PostDetailsState extends State<PostDetails> {
   @override
   Widget build(BuildContext context) {
     final WillPopCallback onWillPopFirst = () {
-      if (new Random().nextInt(2) == new Random().nextInt(4))
+      if (new Random().nextInt(2) == new Random().nextInt(2))
         Ads?.showInterstitialAd();
       return Future.value(true);
     };

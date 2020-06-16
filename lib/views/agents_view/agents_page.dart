@@ -66,7 +66,8 @@ class _AgentsPageState extends State<AgentsPage> {
                         child: Text("Agents",
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 36.0,
+                              fontSize:
+                                  (SizeConfig.blockSizeVertical * 36.0) / 10,
                               fontFamily: "Montserrat",
                               letterSpacing: 1.0,
                             )),
@@ -86,7 +87,9 @@ class _AgentsPageState extends State<AgentsPage> {
                         child: Center(
                           child: Padding(
                             padding: EdgeInsets.symmetric(
-                                horizontal: 22.0, vertical: 6.0),
+                                horizontal:
+                                    (SizeConfig.blockSizeHorizontal * 3),
+                                vertical: 6.0),
                             child: Text("Inspect Agent Profile",
                                 style: TextStyle(color: Colors.black)),
                           ),
@@ -96,6 +99,7 @@ class _AgentsPageState extends State<AgentsPage> {
                   ),
                 ),
                 Expanded(
+                  flex: 7,
                   child: Stack(
                     children: <Widget>[
                       CardScrollWidget(currentPage),
@@ -211,7 +215,10 @@ class CardScrollWidget extends StatelessWidget {
                                     agentNames[i],
                                     style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 23.0,
+                                        fontSize:
+                                            (SizeConfig.blockSizeVertical *
+                                                    30.0) /
+                                                10,
                                         fontFamily: "Orbitron"),
                                   ),
                                 ),

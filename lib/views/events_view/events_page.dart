@@ -65,8 +65,6 @@ class _EventsPageState extends State<EventsPage> {
                 child: (eventsList.listLength() == 0 ||
                         eventsList.viewState == ViewState.Busy)
                     ? Shimmer.fromColors(
-//                        baseColor: Color(0xFF080618).withOpacity(0.8),
-//                        highlightColor: Color(0xFF120840).withOpacity(0.7),
                         baseColor: Colors.black45.withOpacity(0.8),
                         highlightColor: Colors.blueGrey.withOpacity(0.8),
                         child: CardsList(eventsList: eventsPlaceHolder),
@@ -109,7 +107,8 @@ class CardsList extends StatelessWidget {
                         const EdgeInsets.only(left: 20.0, top: 20, bottom: 12),
                     child: Row(
                       children: <Widget>[
-                        (eventsList.getEventAt(index).logo != '')
+                        (eventsList.getEventAt(index).logo != '' &&
+                                eventsList.getEventAt(index).logo != null)
                             ? Expanded(
                                 flex: 1,
                                 child: CircleAvatar(
@@ -121,7 +120,8 @@ class CardsList extends StatelessWidget {
                             : Text("Icon"),
                         Expanded(
                           flex: 8,
-                          child: (eventsList.getEventAt(index).title != '')
+                          child: (eventsList.getEventAt(index).title != '' &&
+                                  eventsList.getEventAt(index).title != null)
                               ? Center(
                                   child: Text(
                                     eventsList.getEventAt(index)?.title,
@@ -148,7 +148,8 @@ class CardsList extends StatelessWidget {
                   Padding(
                       padding: const EdgeInsets.only(left: 20.0, top: 12),
                       child: (eventsList.getEventAt(index) != null)
-                          ? (eventsList.getEventAt(index).date != '')
+                          ? (eventsList.getEventAt(index).date != '' &&
+                                  eventsList.getEventAt(index).date != null)
                               ? Text(
                                   "Date : " + eventsList.getEventAt(index).date,
                                   style: TextStyle(color: Colors.white),
@@ -161,7 +162,8 @@ class CardsList extends StatelessWidget {
                   Padding(
                       padding: const EdgeInsets.only(left: 20.0, top: 12),
                       child: (eventsList.getEventAt(index) != null)
-                          ? (eventsList.getEventAt(index).prize != '')
+                          ? (eventsList.getEventAt(index).prize != '' &&
+                                  eventsList.getEventAt(index).prize != null)
                               ? Text(
                                   "Prize : ${eventsList.getEventAt(index).prize}",
                                   style: TextStyle(color: Colors.white),
@@ -173,7 +175,8 @@ class CardsList extends StatelessWidget {
                           : null),
                   Padding(
                       padding: const EdgeInsets.only(left: 20.0, top: 12),
-                      child: (eventsList.getEventAt(index).location != '')
+                      child: (eventsList.getEventAt(index).location != '' &&
+                              eventsList.getEventAt(index).location != null)
                           ? Text(
                               "Location : " +
                                   eventsList.getEventAt(index).location,

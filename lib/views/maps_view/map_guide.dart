@@ -23,8 +23,7 @@ class _MapGuideState extends State<MapGuide> {
   @override
   Widget build(BuildContext context) {
     final WillPopCallback onWillPopFirst = () {
-      if (widget.args.mapIndex == new Random().nextInt(4) ||
-          widget.args.mapIndex == new Random().nextInt(2))
+      if (new Random().nextInt(2) == new Random().nextInt(2))
         Ads?.showInterstitialAd();
       return Future.value(true);
     };

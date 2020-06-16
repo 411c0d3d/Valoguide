@@ -381,3 +381,7 @@ final List<Agent> agents = [
 ];
 
 const API_KEY = "AIzaSyAAJ5he_Zs_8DYXkBCFrFrgtRNA1WcPXJ4";
+
+const ADMOB_APP_ID = 'ca-app-pub-7091168394964981~2110788989';
+const BANNER_AD_UNIT = 'ca-app-pub-7091168394964981/1423219818';
+const INTERSTITIAL_AD_UNIT = 'ca-app-pub-7091168394964981/1402381977';

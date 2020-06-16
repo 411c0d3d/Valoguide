@@ -25,7 +25,6 @@ class _WeaponDetailsState extends State<WeaponDetails> {
   YoutubeMetaData _videoMetaData;
   bool isExpanded;
 
-  //----------------------------- toggle
   final GlobalKey<ConfigurableExpansionTileState> expansionTileGlobalKey =
       new GlobalKey();
   _onExpansionChanged(bool isExpanded) {
@@ -35,7 +34,6 @@ class _WeaponDetailsState extends State<WeaponDetails> {
       Ads?.showInterstitialAd();
   }
 
-  //-----------------------------
   @override
   initState() {
     super.initState();

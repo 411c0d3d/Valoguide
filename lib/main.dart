@@ -1,5 +1,5 @@
+import 'package:Valoguide/core/constants/data.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_config/flutter_config.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'core/models/eventList_model.dart';
@@ -8,9 +8,8 @@ import 'core/routes/route_generator.dart';
 import 'core/store/store.dart';
 import 'views/home_page.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  await FlutterConfig.loadEnvVariables();
   runApp(RootView());
 }
 

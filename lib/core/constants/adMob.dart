@@ -1,6 +1,6 @@
+import 'package:Valoguide/core/constants/data.dart';
 import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_config/flutter_config.dart';
 
 //const String TestAppId = "ca-app-pub-3940256099942544~3347511713";
 
@@ -15,7 +15,7 @@ class Ads {
 //    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
     // TODO : USE a .env file to extract AdMobAppId
     FirebaseAdMob.instance.initialize(
-      appId: FlutterConfig.get("ADMOB_APP_ID"),
+      appId: ADMOB_APP_ID,
     );
   }
 
@@ -34,7 +34,7 @@ class Ads {
       // TODO : Replace the testAdUnitId with an ad unit id from the AdMob dash.
 
 //      adUnitId: BannerAd.testAdUnitId,
-      adUnitId: FlutterConfig.get("BANNER_AD_UNIT"),
+      adUnitId: BANNER_AD_UNIT,
       size: AdSize.banner,
       targetingInfo: targetingInfo,
       listener: (MobileAdEvent event) {
@@ -73,7 +73,7 @@ class Ads {
   static _createInterstitialAd() {
     interstitialAd = InterstitialAd(
         // TODO : Replace the testAdUnitId with an ad unit id from the AdMob dash.
-        adUnitId: FlutterConfig.get("INTERSTITIAL_AD_UNIT"),
+        adUnitId: INTERSTITIAL_AD_UNIT,
 //        adUnitId: InterstitialAd.testAdUnitId,
         targetingInfo: targetingInfo,
         listener: (MobileAdEvent event) {
@@ -114,31 +114,10 @@ class Ads {
 const List<String> adMobKeyWords = [
   "marketing",
   "advertising",
-  'fashion',
+  'gaming',
   "insurance",
-  "health insurance",
-  "travel insurance",
-  "jobs",
-  "car insurance",
   "stock",
-  "options",
-  "business",
-  "crypto",
-  "online education",
-  "legal",
-  "ebay",
-  "amazon",
-  "lawyer",
-  "mortgage",
-  "degree",
-  "education",
-  "visa",
   "trading",
-  "kids",
-  "gambling",
-  "sponsored",
   "luxury",
-  "luxury",
-  "Internet",
-  "Telecom",
+  "hardware",
 ];
