@@ -157,7 +157,8 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                             DashButton(
-                              dashTitle: 'pro-tips',
+                              dashTitle: ''
+                                  'pro-tips',
                               route: routes['tips'],
                               dashColor: dashColors['tips'],
                               iconPath: dashIcons['tips'],

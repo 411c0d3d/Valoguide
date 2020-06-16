@@ -55,7 +55,16 @@ class Post {
   final String title;
   final String date;
   final String content;
-
-  Post({this.title, this.date, this.content});
-  Post.construct(this.title, this.date, this.content);
+  final String author;
+  final String figure;
+  final String cover;
+  Post(
+      {this.title,
+      this.date,
+      this.content,
+      this.author,
+      this.figure,
+      this.cover});
+  Post.construct(this.title, this.date, this.content, this.author, this.figure,
+      this.cover);
 }

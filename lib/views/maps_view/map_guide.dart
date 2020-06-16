@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:Valoguide/core/constants/adMob.dart';
+import 'package:Valoguide/views/footer.dart';
 import 'package:flutter/material.dart';
 import 'package:Valoguide/core/constants/data.dart';
 
@@ -28,11 +29,6 @@ class _MapGuideState extends State<MapGuide> {
       return Future.value(true);
     };
 
-//    final WillPopCallback onWillPopSecond = () {
-//      if (widget.args.mapIndex == 0 || widget.args.mapIndex == 3)
-//        Ads?.hideInterstitialAd();
-//      return Future.value(true);
-//    };
     List<Widget> guideList =
         maps[widget.args.mapIndex][widget.args.mapSide].map<Widget>((guide) {
       int index =
@@ -105,6 +101,7 @@ class _MapGuideState extends State<MapGuide> {
                   children: guideList),
             ),
           ),
+          bottomNavigationBar: Footer(),
         ),
       ),
     );

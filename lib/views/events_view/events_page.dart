@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:Valoguide/core/constants/adMob.dart';
 import 'package:Valoguide/core/constants/params.dart';
 import 'package:Valoguide/core/models/eventList_model.dart';
@@ -20,6 +22,8 @@ class _EventsPageState extends State<EventsPage> {
 
   final WillPopCallback onWillPop = () {
     Ads?.hideBannerAd();
+    if (new Random().nextInt(2) == new Random().nextInt(2))
+      Ads.showInterstitialAd();
     return Future.value(true);
   };
 
@@ -112,8 +116,10 @@ class CardsList extends StatelessWidget {
                             ? Expanded(
                                 flex: 1,
                                 child: CircleAvatar(
-                                  child: Image.network(
-                                    eventsList.getEventAt(index).logo,
+                                  child: FadeInImage.assetNetwork(
+                                    placeholder:
+                                        "assets/images/background/loader02.gif",
+                                    image: eventsList.getEventAt(index).logo,
                                   ),
                                 ),
                               )
@@ -207,7 +213,11 @@ class CardsList extends StatelessWidget {
                                           .teams
                                           .map<Widget>((team) {
                                         return CircleAvatar(
-                                          child: Image.network(team),
+                                          child: FadeInImage.assetNetwork(
+                                            placeholder:
+                                                "assets/images/background/loader02.gif",
+                                            image: team,
+                                          ),
                                         );
                                       })
                                     ],

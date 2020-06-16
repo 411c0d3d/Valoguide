@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:Valoguide/core/models/newsList_model.dart';
+
 class WeaponArguments {
   final String weaponType;
   final int weaponIndex;
@@ -19,10 +21,9 @@ class MapArguments {
 }
 
 class PostArgument {
-  final String postTitle;
-  final String postContent;
+  final Post post;
 
-  PostArgument(this.postTitle, this.postContent);
+  PostArgument(this.post);
 }
 
 class RoutArgument {
@@ -175,7 +176,7 @@ final dashColors = {
   'agents': 0xFFE53645,
   'weapons': 0xFF8359ff,
   'maps': 0xFF29858B,
-  'tips': 0xFFFFAD31,
+  'tips': 0xFFE4E9F4,
   'news': 0xFF4975FF,
   'events': 0xFFE7C408,
 };
