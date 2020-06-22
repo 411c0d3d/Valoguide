@@ -1,3 +1,4 @@
+import 'package:Valoguide/core/store/store.dart';
 import 'package:Valoguide/views/news_view/post_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -18,6 +19,8 @@ import 'package:Valoguide/views/weapons_view/weapons_page.dart';
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     final RoutArgument routArgument = settings.arguments;
+    Store.navCounter++;
+    print("___________ counter ##### " + Store.navCounter.toString());
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => HomePage());

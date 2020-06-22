@@ -83,11 +83,10 @@ class _AgentDetailsState extends State<AgentDetails> {
                               ),
                             ),
                             leading: Container(
-                              width: SizeConfig.blockSizeVertical * 9.5,
+                              width: SizeConfig.blockSizeVertical * 11.5,
                               child: Row(
                                 children: <Widget>[
                                   Expanded(
-                                    flex: 8,
                                     child: Image.asset(
                                       "assets/images/agents/abilities/${agents[widget.args.agentIndex].name}_${agents[widget.args.agentIndex].abilities[index].name}.png",
                                       height:
@@ -95,20 +94,29 @@ class _AgentDetailsState extends State<AgentDetails> {
                                       color: Color(0xFF00FFA4),
                                     ),
                                   ),
-//                                    SizedBox(
-//                                      width: 10,
-//                                    ),
                                   Expanded(
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        agents[widget.args.agentIndex]
-                                            .abilities[index]
-                                            .charge,
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          color: Color(0xFF00FFA4),
-                                        ),
+                                      child: Row(
+                                        children: <Widget>[
+                                          Image.asset(
+                                            agents[widget.args.agentIndex]
+                                                .abilities[index]
+                                                .chargeIcon,
+                                            height:
+                                                SizeConfig.blockSizeVertical *
+                                                    9.5,
+                                            color: Color(0xFF00FFA4),
+                                          ),
+                                          Text(
+                                            '\t${agents[widget.args.agentIndex].abilities[index].key}',
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold,
+                                              color: Color(0xFF00FFA4),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ),
@@ -258,12 +266,15 @@ Widget _buildAgentCard(widget) {
                   ],
                 ),
               ),
-              SizedBox(
-                width: 2.0,
-                height: 100,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.4),
+              Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: SizedBox(
+                  width: 2.0,
+                  height: 100,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.4),
+                    ),
                   ),
                 ),
               ),
@@ -271,7 +282,7 @@ Widget _buildAgentCard(widget) {
                 flex: 4,
                 child: Padding(
                   padding: EdgeInsets.only(
-                      top: (height * 0.23).toDouble(),
+                      top: (height * 0.40).toDouble(),
                       bottom: 10,
                       right: 5,
                       left: 5),
@@ -296,18 +307,31 @@ Widget _buildAgentCard(widget) {
                         height: 20,
                       ),
                       Center(
-                        child: Column(
-                          children: <Widget>[
-                            Text('${agents[widget.args.agentIndex].type}'),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Text('${agents[widget.args.agentIndex].rank}'),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Text('${agents[widget.args.agentIndex].origin}'),
-                          ],
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 5.0),
+                          child: Column(
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 5.0),
+                                    child: Text(
+                                        '${agents[widget.args.agentIndex].type}'),
+                                  ),
+                                  Image.asset(
+                                      'assets/images/agents/classes/${agents[widget.args.agentIndex].type}.webp'),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Text('${agents[widget.args.agentIndex].rank}'),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Text('${agents[widget.args.agentIndex].origin}'),
+                            ],
+                          ),
                         ),
                       ),
                     ],

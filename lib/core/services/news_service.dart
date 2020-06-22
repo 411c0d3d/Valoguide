@@ -7,6 +7,7 @@ import 'package:html/dom.dart';
 class NewsService {
   static Future fetchPosts() async {
     var client = http.Client();
+
     http.Response response =
         await client.get('https://dotesports.com/valorant');
 
@@ -19,9 +20,9 @@ class NewsService {
     List<Element> heroPosts = document.getElementsByClassName('hero-post-item');
     List<Element> newsRows = newsSections.querySelectorAll('article');
     Element eventsItem;
-//    print(newsRows.length);
+    print(newsRows.length);
     var title = '';
-    List<Element> paragraphs = [];
+    List<Element> paragraphes = [];
     var date = '';
     var figure = '';
     var content = '';
@@ -64,13 +65,12 @@ class NewsService {
             .querySelectorAll('figure')[0]
             .querySelectorAll("img")[0]
             .attributes['src'];
-      paragraphs = postBody.querySelectorAll('p');
-      for (var p in paragraphs) {
+      paragraphes = postBody.querySelectorAll('p');
+      for (var p in paragraphes) {
         content += "\n\t\t\t\t ${p.text}";
       }
       posts.add(Post.construct(title, date, content, author, figure, cover));
       content = '';
-      figure = '';
     }
 
     for (var eventsRow in newsRows) {
@@ -93,6 +93,11 @@ class NewsService {
           .querySelector('.entry-title')
           .querySelector('a')
           .attributes['href'];
+
+      cover = eventsRow
+          .querySelector('.attachment-post-thumbnail')
+          .attributes['src'];
+
       http.Response postResponse = await client.get(link);
       if (postResponse.statusCode != 200) return postResponse.body;
 
@@ -100,8 +105,8 @@ class NewsService {
 
       Element postBody = postDocument.querySelector('.entry-content');
 
-      paragraphs = postBody.querySelectorAll('p');
-      for (var p in paragraphs) {
+      paragraphes = postBody.querySelectorAll('p');
+      for (var p in paragraphes) {
         content += "\n\t\t\t\t ${p.text}";
         if (postBody.querySelectorAll('figure').length != 0) if (postBody
                 .querySelectorAll('figure')[0]
@@ -113,9 +118,8 @@ class NewsService {
               .querySelectorAll("img")[0]
               .attributes['src'];
       }
-      posts.add(Post.construct(title, date, content, author, figure, ''));
+      posts.add(Post.construct(title, date, content, author, figure, cover));
       content = '';
-      figure = '';
     }
 //    posts.forEach((post) {
 //      print(

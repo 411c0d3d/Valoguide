@@ -7,6 +7,7 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:Valoguide/core/constants/data.dart';
+import 'package:rate_my_app/rate_my_app.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -15,12 +16,79 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   double aspectRatio;
+  final RateMyApp rateMyApp = RateMyApp(
+    preferencesPrefix: 'rateMyApp_',
+    minDays: 3,
+    minLaunches: 7,
+    remindDays: 2,
+    remindLaunches: 5,
+    googlePlayIdentifier: 'com.Valoguide',
+  );
   @override
   void initState() {
     // TODO: implement initState
     Ads.hideBannerAd();
 
     super.initState();
+    rateMyApp.init().then((_) {
+      if (rateMyApp.shouldOpenDialog) {
+        rateMyApp.showStarRateDialog(
+          context,
+          title: 'Hi Agent!', // The dialog title.
+          message:
+              " 🙏🏼 Let's borrow a moment for a quick rating.", // The dialog message.
+          // contentBuilder: (context, defaultContent) => content, // This one allows you to change the default dialog content.
+          actionsBuilder: (context, stars) {
+            // Triggered when the user updates the star rating.
+            return [
+              // Return a list of actions (that will be shown at the bottom of the dialog).
+              FlatButton(
+                child: Text('Submit'),
+                onPressed: () {
+                  print('Thanks for the ' +
+                      (stars == null ? '0' : stars.round().toString()) +
+                      ' star(s) !');
+                  if (stars >= 3) {
+                    showDialog(
+                        context: context,
+                        builder: (_) {
+                          return AlertDialog(
+                            content: Container(
+                              color: Colors.black45.withOpacity(0.7),
+                              child: Text(
+                                'Leaving a review would be appreciated ...',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: "Tisa Sans"),
+                              ),
+                            ),
+                          );
+                        }).then((value) {
+                      rateMyApp.launchStore();
+                    });
+                    rateMyApp.callEvent(RateMyAppEventType.rateButtonPressed);
+                    Navigator.pop<RateMyAppDialogButton>(
+                        context, RateMyAppDialogButton.rate);
+                  }
+                },
+              ),
+            ];
+          },
+          ignoreIOS:
+              true, // Set to false if you want to show the native Apple app rating dialog on iOS.
+          dialogStyle: DialogStyle(
+            // Custom dialog styles.
+            titleAlign: TextAlign.center,
+            messageAlign: TextAlign.center,
+            messagePadding: EdgeInsets.only(bottom: 20),
+          ),
+          starRatingOptions:
+              StarRatingOptions(), // Custom star bar rating options.
+          onDismissed: () => rateMyApp.callEvent(RateMyAppEventType
+              .laterButtonPressed), // Called when the user dismissed the dialog (either by taping outside or by pressing the "back" button).
+        );
+      }
+    });
   }
 
   @override

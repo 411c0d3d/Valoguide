@@ -93,91 +93,11 @@ class CardsList extends StatelessWidget {
     return ListView.separated(
       itemCount: eventsList?.listLength(),
       itemBuilder: (context, index) {
-        if (index < 2)
-          return HighPostCard(
-            index: index,
-            eventsList: eventsList,
-          );
-        else
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Card(
-              elevation: 6,
-              color: Colors.black45.withOpacity(0.4),
-              child: InkWell(
-                onTap: () {
-                  RoutArgument routArgument = RoutArgument();
-                  routArgument.postArgument =
-                      PostArgument(eventsList.getPostAt(index));
-                  Navigator.pushNamed(context, '/postDetails',
-                      arguments: routArgument);
-                },
-                child: Container(
-                  height: 100,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 20.0, top: 20, bottom: 12),
-                        child: (eventsList.getPostAt(index).title != '')
-                            ? Text(
-                                eventsList.getPostAt(index)?.title,
-                                style: TextStyle(
-                                    color: Color(0xFF00FFA4),
-                                    fontSize: (eventsList
-                                                .getPostAt(index)
-                                                .title
-                                                .length <
-                                            30)
-                                        ? 22
-                                        : 15),
-                              )
-                            : Text(
-                                "Title",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontSize: 30),
-                              ),
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 20.0, top: 12),
-                              child: (eventsList.getPostAt(index) != null)
-                                  ? (eventsList.getPostAt(index).author != '')
-                                      ? Text(
-                                          eventsList.getPostAt(index).author,
-                                          style: TextStyle(color: Colors.blue),
-                                        )
-                                      : Text(
-                                          "Author : Loading",
-                                          style: TextStyle(color: Colors.blue),
-                                        )
-                                  : null),
-                          Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 20.0, top: 12),
-                              child: (eventsList.getPostAt(index) != null)
-                                  ? (eventsList.getPostAt(index).date != '')
-                                      ? Text(
-                                          " - " +
-                                              eventsList.getPostAt(index).date,
-                                          style: TextStyle(color: Colors.white),
-                                        )
-                                      : Text(
-                                          "Date : Loading",
-                                          style: TextStyle(color: Colors.white),
-                                        )
-                                  : null),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          );
+//        if (index < 2)
+        return HighPostCard(
+          index: index,
+          eventsList: eventsList,
+        );
       },
       separatorBuilder: (context, index) => SizedBox(
         height: 0,
@@ -195,6 +115,7 @@ class HighPostCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 270,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: GestureDetector(
@@ -312,14 +233,24 @@ class HighPostCard extends StatelessWidget {
                                     child: (eventsList.getPostAt(index) != null)
                                         ? (eventsList.getPostAt(index).date !=
                                                 '')
-                                            ? Text(
-                                                " - " +
-                                                    eventsList
-                                                        .getPostAt(index)
-                                                        .date,
-                                                style: TextStyle(
-                                                    color: Colors.white),
-                                              )
+                                            ? Container(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 22.0,
+                                                    vertical: 6.0),
+                                                decoration: BoxDecoration(
+                                                    color: Colors.black
+                                                        .withOpacity(0.7),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10.0)),
+                                                child: Text(
+                                                  " - " +
+                                                      eventsList
+                                                          .getPostAt(index)
+                                                          .date,
+                                                  style: TextStyle(
+                                                      color: Colors.white),
+                                                ))
                                             : Text(
                                                 "Date : Loading",
                                                 style: TextStyle(

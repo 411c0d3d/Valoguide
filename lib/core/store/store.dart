@@ -7,7 +7,7 @@ import 'package:Valoguide/core/services/news_service.dart';
 class Store {
 // Here stored invoked services
   Map<dynamic, Model> repository = {};
-
+  static int navCounter = 0;
   static final Store _singleton = Store._internal();
 
   Store._internal();
