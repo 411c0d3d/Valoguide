@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:Valoguide/core/models/eventList_model.dart';
 import 'package:http/http.dart'
     as http; // Contains a client for making API calls

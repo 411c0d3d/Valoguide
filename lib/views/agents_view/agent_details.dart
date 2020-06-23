@@ -83,7 +83,7 @@ class _AgentDetailsState extends State<AgentDetails> {
                               ),
                             ),
                             leading: Container(
-                              width: SizeConfig.blockSizeVertical * 11.5,
+                              width: SizeConfig.blockSizeVertical * 15.5,
                               child: Row(
                                 children: <Widget>[
                                   Expanded(
@@ -234,47 +234,45 @@ Widget _buildAgentCard(widget) {
           child: Row(
             children: <Widget>[
               Expanded(
-                flex: 3,
-                child: Column(
-                  children: <Widget>[
-                    Expanded(
-                      flex: 3,
-                      child: Padding(
-                        padding: EdgeInsets.only(top: height * 0.10, left: 10),
+                flex: 2,
+                child: Padding(
+                  padding: EdgeInsets.only(top: height * 0.10),
+                  child: Column(
+                    children: <Widget>[
+                      Expanded(
+                        flex: 3,
                         child: Text(
                           '${agents[widget.args.agentIndex].name}',
                           style: TextStyle(
                               fontSize:
                                   agents[widget.args.agentIndex].name.length > 5
-                                      ? 14
+                                      ? 13
                                       : 18,
                               fontFamily: "Valorant"),
                         ),
                       ),
-                    ),
-                    Expanded(
-                      flex: 7,
-                      child: Padding(
-                        padding: EdgeInsets.only(bottom: height * 0.25),
-                        child: Image.asset(
-                          "assets/images/agents/avatar/${agents[widget.args.agentIndex].name.toString().toLowerCase()}.jpg",
-                          width: 150,
-                          height: 150,
+                      Expanded(
+                        flex: 7,
+                        child: Padding(
+                          padding:
+                              EdgeInsets.only(bottom: height * 0.25, right: 5),
+                          child: Image.asset(
+                            "assets/images/agents/avatar/${agents[widget.args.agentIndex].name.toString().toLowerCase()}.jpg",
+                            width: 150,
+                            height: 150,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: SizedBox(
-                  width: 2.0,
-                  height: 100,
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.4),
-                    ),
+              SizedBox(
+                width: 2.0,
+                height: height - (height * 0.2),
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.4),
                   ),
                 ),
               ),
@@ -282,10 +280,7 @@ Widget _buildAgentCard(widget) {
                 flex: 4,
                 child: Padding(
                   padding: EdgeInsets.only(
-                      top: (height * 0.40).toDouble(),
-                      bottom: 10,
-                      right: 5,
-                      left: 5),
+                      top: (height / 3.3).toDouble(), right: 5, left: 5),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -340,7 +335,7 @@ Widget _buildAgentCard(widget) {
               ),
               SizedBox(
                 width: 2.0,
-                height: 100,
+                height: height - (height * 0.2),
                 child: DecoratedBox(
                   decoration: BoxDecoration(
                     color: Colors.white.withOpacity(0.4),
@@ -348,7 +343,7 @@ Widget _buildAgentCard(widget) {
                 ),
               ),
               Expanded(
-                flex: 3,
+                flex: 2,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[

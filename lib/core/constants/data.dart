@@ -34,35 +34,487 @@ class RoutArgument {
 }
 
 List<String> agentsImages = [
-  "assets/images/agents/port/breach_port.jpg",
+  "assets/images/agents/port/brimstone_port.jpg",
+  "assets/images/agents/port/jett_port.jpg",
   "assets/images/agents/port/raze_port.jpg",
   "assets/images/agents/port/cypher_port.jpg",
-  "assets/images/agents/port/sage_port.jpg",
-  "assets/images/agents/port/sova_port.jpg",
-  "assets/images/agents/port/viper_port.jpg",
   "assets/images/agents/port/phoenix_port.jpg",
-  "assets/images/agents/port/jett_port.jpg",
-  "assets/images/agents/port/omen_port.jpg",
+  "assets/images/agents/port/viper_port.jpg",
+  "assets/images/agents/port/sova_port.jpg",
+  "assets/images/agents/port/sage_port.jpg",
+  "assets/images/agents/port/breach_port.jpg",
   "assets/images/agents/port/reyna_port.jpg",
-  "assets/images/agents/port/brimstone_port.jpg",
+  "assets/images/agents/port/omen_port.jpg",
 ];
 
 List<String> agentClass = ['Initiator', 'Duelist', 'Controller', 'Sentinel'];
 
 List<String> agentNames = [
-  "Breach",
+  "Brimstone",
+  "Jett",
   "Raze",
   "Cypher",
-  "Sage",
-  "Sova",
-  "Viper",
   "Phoenix",
-  "Jett",
-  "Omen",
+  "Viper",
+  "Sova",
+  "Sage",
+  "Breach",
   "Reyna",
-  "Brimstone",
+  "Omen",
 ];
-
+final List<Agent> agents = [
+  //Brimstone
+  Agent(
+      'Brimstone',
+      'Controller',
+      'B',
+      'USA',
+      [
+        Ability(
+            'Stim Beacon',
+            '100',
+            '2',
+            'assets/images/agents/abilities/charges/2.png',
+            'ORnv5UfDzBM',
+            'C',
+            "EQUIP a stim beacon. FIRE to toss the stim beacon in front of Brimstone. Upon landing, the stim beacon will create a field that grants players RapidFire."),
+        Ability(
+            'Incendiary',
+            '200',
+            '1',
+            'assets/images/agents/abilities/charges/1.png',
+            '7vjdkOdpEas',
+            'Q',
+            "EQUIP an incendiary grenade launcher. FIRE to launch a grenade that detonates as it comes to a rest on the floor, creating a lingering fire zone that damages players within the zone."),
+        Ability(
+            'Sky Smoke',
+            'Free',
+            '3',
+            'assets/images/agents/abilities/charges/3.png',
+            'I2__jdzteUY',
+            'E',
+            "EQUIP a tactical map. FIRE to set locations where Brimstone's smoke clouds will land. ALTERNATE FIRE to confirm, launching long-lasting smoke clouds that block vision in the selected area."),
+        Ability(
+            'Orbital Strike',
+            '6 Points',
+            '1',
+            'assets/images/agents/abilities/charges/1.png',
+            'jC_8aGTWW0k',
+            'X',
+            "EQUIP a tactical map. FIRE to launch a lingering orbital strike laster at the selected location, dealing high damage-over-time to players caught in the selected area.")
+      ],
+      "Joining from the USA, Brimstone's orbital arsenal ensures his squad always has the advantage. His ability to deliver utility precisely and from a distance make him an unmatched boots-on-the-ground commander."),
+  //jett
+  Agent(
+      'Jett',
+      'Duelist',
+      'C',
+      'S.Korea',
+      [
+        Ability(
+            'Cloudburst',
+            '100',
+            '3',
+            'assets/images/agents/abilities/charges/3.png',
+            'SIYFZGswMbc',
+            'C',
+            "INSTANTLY throw a projectile that expands into a brief vision-blocking cloud on impact with a surfact. HOLD the ability key to curve the smoke in the direction of your crosshair."),
+        Ability(
+            'Updraft',
+            '200',
+            '2',
+            'assets/images/agents/abilities/charges/2.png',
+            'laqCo3wrdd4',
+            'Q',
+            "INSTANTLY propel Jett high into the air."),
+        Ability(
+            'Tailwind',
+            'Free',
+            '1',
+            'assets/images/agents/abilities/charges/1.png',
+            '93CK9fDyD5A',
+            'E',
+            "INSTANTLY propel Jett in the direction she is moving. If Jett is standing still she will propel forward."),
+        Ability(
+            'Blade Storm',
+            '6 Points',
+            '1',
+            'assets/images/agents/abilities/charges/1.png',
+            'fIakwAMXoG8',
+            'X',
+            "EQUIP a set of highly accurate throwing knives that recharge on killing an opponent. FIRE to throw a single knife at your target. ALTERNATE FIRE to throw all remaining daggers at your target.")
+      ],
+      "Representing her home country of South Korea, Jett's agile and evasive fighting style lets her take risks no one else can. She runs circles around every skirmish, cutting enemies before they even know what hit them."),
+  //raze
+  Agent(
+      'Raze',
+      'Duelist',
+      'B',
+      'El Salvador',
+      [
+        Ability(
+            'Boom Bot',
+            '100',
+            '1',
+            'assets/images/agents/abilities/charges/1.png',
+            '9L1zcKM6-Sc',
+            'C',
+            "EQUIP a Boom Bot. FIRE will deploy the bot, causing it to travel in a straight line on the ground, bouncing off walls. The Boom Bot will lock on to any enemies in it frontal cone and chase them, exploding for heavy damage if it reaches them."),
+        Ability(
+            'Paint Shells',
+            '200',
+            '2',
+            'assets/images/agents/abilities/charges/2.png',
+            '-RUgeNH7Cuw',
+            'Q',
+            "INSTANTLY throw a Blast Pack that will stick to surfaces. RE-USE the ability after deployment to detonate, damaging and moving anything hit."),
+        Ability(
+            'Blast Pack',
+            'Free',
+            '1',
+            'assets/images/agents/abilities/charges/1.png',
+            'yz9x4Ypf0SI',
+            'E',
+            "EQUIP a cluster grenade. FIRE to throw the grenade, which does damage and creates sub-munitions, each doing damage to anyone in their range."),
+        Ability(
+            'Showstopper',
+            '6 Points',
+            '1',
+            'assets/images/agents/abilities/charges/1.png',
+            'rZAun19tD9E',
+            'X',
+            "EQUIP a rocket launcher. FIRE shoots a rocket that does massive area damage on contact with anything.")
+      ],
+      "Raze explodes out of Brazil with her big personality and big guns. With her blunt-force-trauma playstyle, she excels at flushing entrenched enemies and clearing tight spaces with a generous dose of “boom.”"),
+  //cypher
+  Agent(
+      'Cypher',
+      'Sentinel',
+      'A',
+      'Morocco',
+      [
+        Ability(
+            'Trapwire',
+            '200',
+            '2',
+            'assets/images/agents/abilities/charges/2.png',
+            'saHuEGcGpYU',
+            'C',
+            "EQUIP a trapwire. FIRE to place a desctuctible and covert tripwire at the targeted location, creating a line that spans between the placed location and the wall opposite. Enemy players who cross a tripwire will be tethered, and dazed after a short period if they do not destroy the device in time. This ability can be picked up to be REDEPLOYED."),
+        Ability(
+            'Cyber Cage',
+            '100',
+            '2',
+            'assets/images/agents/abilities/charges/2.png',
+            'Jh28VPiVWMI',
+            'Q',
+            "EQUIP a cyber cage. FIRE to toss the cyber cage in front of Cypher. ACTIVATE to create a zone that blocks vision and slows enemies who pass through it."),
+        Ability(
+            'Spycam',
+            'Free',
+            '1',
+            'assets/images/agents/abilities/charges/1.png',
+            'QnF9f-sByQE',
+            'E',
+            "EQUIP a spycam. FIRE to place the spycam at the targeted location. RE-USE this ability to take control of the camera's view. While in control of the camera, FIRE to shoot a marking dart. This dart will reveal the location of any player struck by the dart."),
+        Ability(
+            'Neural Theft',
+            '7 Points',
+            '1',
+            'assets/images/agents/abilities/charges/1.png',
+            '4Y_mdf38v_A',
+            'X',
+            "INSTANTLY use on a dead enemy player in your crosshairs to reveal the location of all living enemy players.")
+      ],
+      "The Moroccan information broker, Cypher is a one-man surveillance network who keeps tabs on the enemy's every move. No secret is safe. No maneuver goes unseen. Cypher is always watching."),
+  //Phoenix
+  Agent(
+      'Phoenix',
+      'Duelist',
+      'B',
+      'UK',
+      [
+        Ability(
+            'Blaze',
+            '200',
+            '1',
+            'assets/images/agents/abilities/charges/1.png',
+            'EkDGsyCHjmE',
+            'C',
+            "EQUIP a flame wall. FIRE to create a line of flame that moves forward, creating a wall of fire that blocks vision and damages players passing through it. HOLD FIRE to bend the wall in the direction of your crosshair."),
+        Ability(
+            'Curveball',
+            '200',
+            '2',
+            'assets/images/agents/abilities/charges/2.png',
+            'apxrRIFXO2Y',
+            'Q',
+            "EQUIP a flare orb that takes a curving path and detonates shortly after throwing. FIRE to curve the flare orb to the left, detonating and blinding any player who sees the orb. ALTERNATE FIRE to curve the flare orb to the right."),
+        Ability(
+            'Hot Hands',
+            'Free',
+            '1',
+            'assets/images/agents/abilities/charges/1.png',
+            'DB_O4N3Lr40',
+            'E',
+            "EQUIP a fireball. FIRE to throw a fireball that explodes after a set amount of time or upon hitting the ground, creating a lingering fire zone that damages enemies."),
+        Ability(
+            'Run it Back',
+            '6 Points',
+            '1',
+            'assets/images/agents/abilities/charges/1.png',
+            'haZbXfIhOOU',
+            'X',
+            "INSTANTLY place a marker at Phoenix's location. while this ability is active, dying or allowing the timer to expire will end this ability and bring Phoenix back to this location with full health.")
+      ],
+      "Hailing from the U.K., Phoenix's star power shines through in his fighting style, igniting the battlefield with flash and flare. Whether he's got backup or not, he'll rush into a fight on his own terms."),
+  //viper
+  Agent(
+      'Viper',
+      'Controller',
+      'C',
+      'USA',
+      [
+        Ability(
+            'Snake Bite',
+            '100',
+            '2',
+            'assets/images/agents/abilities/charges/2.png',
+            'ozvJObMxnbY',
+            'C',
+            "EQUIP a chemical launcher. FIRE to launch a canister that shatters upon hitting the floor, creating a lingering chemical zone that damages and slows enemies."),
+        Ability(
+            'Poison Cloud',
+            '200',
+            '1',
+            'assets/images/agents/abilities/charges/1.png',
+            'W_7hdkvJ_AE',
+            'Q',
+            "EQUiP a gas emitter. FIRE to throw the emitter that perpetually remains throughout the round. RE-USE the ability to create a toxic gas cloud at the cost of fuel. This ability can be RE-USED more than once and can be picked up to be REDEPLOYED."),
+        Ability(
+            'Toxic Screen',
+            'Free',
+            '1',
+            'assets/images/agents/abilities/charges/1.png',
+            '3xRd7U2azeI',
+            'E',
+            "EQUIP a gas emitter launcher. FIRE to deploy a long line of gas emitters. RE-USE the ability to create a tall wall of toxic gas at the cost of fuel. This ability can be RE-USED more than once."),
+        Ability(
+            'Vipers Pit',
+            '7 Points',
+            '1',
+            'assets/images/agents/abilities/charges/1.png',
+            'nQaMCAtftpQ',
+            'X',
+            "EQUIP a chemical sprayer. FIRE to spray a chemical cloud in all directions around Viper, creating a large cloud that reduces the vision range and maximum health of players inside of it.")
+      ],
+      "The American chemist, Viper deploys an array of poisonous chemical devices to control the battlefield and cripple the enemy's vision. If the toxins don't kill her prey, her mind games surely will."),
+  //sova
+  Agent(
+      'Sova',
+      'Initiator',
+      'A',
+      'Russia',
+      [
+        Ability(
+            'Owl Drone',
+            '300',
+            '1',
+            'assets/images/agents/abilities/charges/1.png',
+            '6vX7vhhXrDA',
+            'C',
+            "EQUIP an owl drone. FIRE to deploy and take control of movement of the drone. While in control of the drone, FIRE to shoot a marking dart. This dart will reveal the location of any player struck by the dart."),
+        Ability(
+            'Shock Bolt',
+            '100',
+            '2',
+            'assets/images/agents/abilities/charges/2.png',
+            'GE_AyjdPcNA',
+            'Q',
+            "EQUIP a bow with a shock bolt. FIRE to send the explosive bolt forward, detonating upon collision and damaging players nearby. HOLD FIRE to extend the range of teh projectile. ALTERNATE FIRE to add up to two bounces to this arrow."),
+        Ability(
+            'Recon Bolt',
+            'Free',
+            '1',
+            'assets/images/agents/abilities/charges/1.png',
+            '4WX_Ad7dQ9A',
+            'E',
+            "EQUIP a bow with recon boly. FIRE to send the recon bolt forward, activating upon collision and revealing the location of nearby enemies caught in the line of sight of the bolt. Enemies can destroy this bolt. HOLD FIRE to extend the range of the projective. ALTERNATE FIRE to add up to two bounces to this arrow."),
+        Ability(
+            'Hunters Fury',
+            '7 Points',
+            '1',
+            'assets/images/agents/abilities/charges/1.png',
+            '-Qjs3b4X5jg',
+            'X',
+            "EQUIP a bow with three long-range, wall-piercing energy blasts. FIRE to release an energy blast in a line in front of Sova, dealing damage and revealing the location of enemies caught in the line. This ability can be RE-USED up to two more times while the ability timer is active.")
+      ],
+      "Born from the eternal winter of Russia's tundra, Sova tracks, finds, and eliminates enemies with ruthless efficiency and precision. His custom bow and incredible scouting abilities ensure that even if you run, you cannot hide."),
+  //sage
+  Agent(
+      'Sage',
+      'Sentinel',
+      'S',
+      'China',
+      [
+        Ability(
+            'Barrier Orb',
+            '300',
+            '1',
+            'assets/images/agents/abilities/charges/1.png',
+            'nZRCqqRWzjs',
+            'C',
+            "EQUIP a barrier orb. FIRE places a solid wall. ALT FIRE rotates the targeter."),
+        Ability(
+            'Slow Orb',
+            '100',
+            '2',
+            'assets/images/agents/abilities/charges/2.png',
+            'pXIhQpOXd6A',
+            'Q',
+            "EQUIP a slowing orb. FIRE to throw a slowing orb forward that detonates upon landing, creating a lingering field that slows players caught inside of it."),
+        Ability(
+            'Healing Orb',
+            'Free',
+            '1',
+            'assets/images/agents/abilities/charges/1.png',
+            'tHQQZ2oWdlk',
+            'E',
+            "EQUIP a healing orb. FIRE with your crosshairs over a damaged ally to activate a heal-over-time on them. ALT FIRE while Sage is damaged to activate a self heal-over-time."),
+        Ability(
+            'Resurrection',
+            '7 Points',
+            '1',
+            'assets/images/agents/abilities/charges/1.png',
+            'SvtD0G-u44Y',
+            'X',
+            "EQUIP a resurrection ability. FIRE with your crosshairs placed over a dead ally to begin resurrecting them. After a brief channel, the ally will be brought back to life with full health.")
+      ],
+      "The stronghold of China, Sage creates safety for herself and her team wherever she goes. Able to revive fallen friends and stave off aggressive pushes, she provides a calm center to a hellish fight."),
+  //breach
+  Agent(
+      'Breach',
+      'Initiator',
+      'S',
+      'Sweden',
+      [
+        Ability(
+            'Aftershock',
+            '100',
+            '2',
+            'assets/images/agents/abilities/charges/2.png',
+            '2TK7nw3B0kA',
+            'C',
+            "EQUIP a fusion charge. FIRE the charge to set a slow-acting burst through the wall. The burst does heavy damage to anyone caught in its area."),
+        Ability(
+            'Flashpoint',
+            '200',
+            '2',
+            'assets/images/agents/abilities/charges/2.png',
+            'H6EFvy8Ktxs',
+            'Q',
+            "EQUIP a blind charge. FIRE the charge to set a fast-acting burst through the wall. The charge detonates to blind all players looking at it."),
+        Ability(
+            'Fault Line',
+            'Free',
+            '1',
+            'assets/images/agents/abilities/charges/1.png',
+            'pYqBarWr1ug',
+            'E',
+            "EQUIP a seismic blast. HOLD FIRE to increase the distance. RELEASE to set off the quake, dazing all players in its zone and in a line up to the zone."),
+        Ability(
+            'Rolling Thunder',
+            '7 Points',
+            '1',
+            'assets/images/agents/abilities/charges/1.png',
+            '7sGnlhoDiY4',
+            'X',
+            "EQUIP a Seismic Charge. FIRE to send a cascading quake through all terrain in a large cone. The quake dazes and knocks up anyone caught in it.")
+      ],
+      "Breach, the bionic Swede, fires powerful, targeted kinetic blasts to aggressively clear a path through enemy ground. The damage and disruption he inflicts ensures no fight is ever fair."),
+  //Reyna
+  Agent(
+      'Reyna',
+      'Duelist',
+      'A',
+      'Mexico',
+      [
+        Ability(
+            'Leer',
+            '200',
+            '2',
+            'assets/images/agents/abilities/charges/2.png',
+            'fNKwnXMg5aM',
+            'C',
+            "EQUIP an ethereal destructible eye. ACTIVATE to cast the eye a short distance forward. The eye will Nearsight all enemies who look at it."),
+        Ability(
+            'Devour',
+            '100',
+            '/4',
+            'assets/images/agents/abilities/charges/4.png',
+            'ltX5w5lSQic',
+            'Q',
+            "Enemies killed by Reyna leave behind Soul Orbs that last 3 seconds. INSTANTLY consume a nearby soul orb, rapidly healing for a short duration. Health gained through this skill exceeding 100 will decay over time. If EMPRESS is active, this skill will automatically cast and not consume the orb."),
+        Ability(
+            'Dismiss',
+            'Free',
+            '/4',
+            'assets/images/agents/abilities/charges/4.png',
+            'sqcGRWJwfP0',
+            'E',
+            "INSTANTLY consume a nearby soul orb, becoming intangible for a short duration. If EMPRESS is active, also become invisible."),
+        Ability(
+            'Empress',
+            '6 Points',
+            '1',
+            'assets/images/agents/abilities/charges/1.png',
+            '9AxLprV1Vqo',
+            'X',
+            "INSTANTLY enter a frenzy, increasing firing speed, equip and reload speed dramatically. Scoring a kill renews the duration.")
+      ],
+      "Forged in the heart of Mexico, Reyna dominates single combat, popping off with each kill she scores. Her capability is only limited by her raw skill, making her highly dependent on performance."),
+  //Omen
+  Agent(
+      'Omen',
+      'Controller',
+      'A',
+      'Void',
+      [
+        Ability(
+            'Shrouded Step',
+            '100',
+            '2',
+            'assets/images/agents/abilities/charges/2.png',
+            'AA_pcppmevY',
+            'C',
+            "EQUIP a shadow walk ability and see its range indicator. FIRE to begin a brief channel, then teleport to the marked location."),
+        Ability(
+            'Paranoia',
+            '200',
+            '1',
+            'assets/images/agents/abilities/charges/1.png',
+            'ur3eailMCbQ',
+            'Q',
+            "INSTANTLY fire a shadow projectile forward, briefly reducing the vision range of all players it touches. This projectile can pass straight through walls."),
+        Ability(
+            'Dark Cover',
+            'Free',
+            '2',
+            'assets/images/agents/abilities/charges/2.png',
+            'Y6n8hWH3OYY',
+            'E',
+            "EQUIP a shadow orb and see its range indicator. FIRE to throw the shadow orb to the marked location, creating a long-lasting shadow sphere that blocks vision. HOLD ALTERNATE FIRE while targeting to move the marker further away. HOLD the ability key while targeting to move the marker closer."),
+        Ability(
+            'From the Shadows',
+            '7 Points',
+            '1',
+            'assets/images/agents/abilities/charges/1.png',
+            '_A_7NnTCc_g',
+            'X',
+            "EQUIP a tactical map. FIRE to begin teleporting to the selected location. While teleporting, Omen will appear as a Shade that can be destroyed by an enemy to cancel his teleport.")
+      ],
+      "A phantom of a memory, Omen hunts in the shadows. He renders enemies blind, teleports across the field, then lets paranoia take hold as his foe scrambles to learn where he might strike next."),
+];
 dynamic weaponNames = {
   'sidearm': [
     {'name': "Classic", 'clip': "Z7OC_DW4hZQ", 'card': ''},
@@ -212,450 +664,7 @@ class Agent {
       this.description);
 }
 
-final List<Agent> agents = [
-  Agent(
-      'Breach',
-      'Initiator',
-      'S',
-      'Sweden',
-      [
-        Ability(
-            'Aftershock',
-            '100',
-            '2',
-            'assets/images/agents/abilities/charges/2.png',
-            '2TK7nw3B0kA',
-            'C',
-            "EQUIP a fusion charge. FIRE the charge to set a slow-acting burst through the wall. The burst does heavy damage to anyone caught in its area."),
-        Ability(
-            'Flashpoint',
-            '200',
-            '2',
-            'assets/images/agents/abilities/charges/2.png',
-            'H6EFvy8Ktxs',
-            'Q',
-            "EQUIP a blind charge. FIRE the charge to set a fast-acting burst through the wall. The charge detonates to blind all players looking at it."),
-        Ability(
-            'Fault Line',
-            'Free',
-            '1',
-            'assets/images/agents/abilities/charges/1.png',
-            'pYqBarWr1ug',
-            'E',
-            "EQUIP a seismic blast. HOLD FIRE to increase the distance. RELEASE to set off the quake, dazing all players in its zone and in a line up to the zone."),
-        Ability(
-            'Rolling Thunder',
-            '7 Points',
-            '1',
-            'assets/images/agents/abilities/charges/1.png',
-            '7sGnlhoDiY4',
-            'X',
-            "EQUIP a Seismic Charge. FIRE to send a cascading quake through all terrain in a large cone. The quake dazes and knocks up anyone caught in it.")
-      ],
-      "Breach, the bionic Swede, fires powerful, targeted kinetic blasts to aggressively clear a path through enemy ground. The damage and disruption he inflicts ensures no fight is ever fair."),
-  Agent(
-      'Raze',
-      'Duelist',
-      'B',
-      'El Salvador',
-      [
-        Ability(
-            'Boom Bot',
-            '100',
-            '1',
-            'assets/images/agents/abilities/charges/1.png',
-            '9L1zcKM6-Sc',
-            'C',
-            "EQUIP a Boom Bot. FIRE will deploy the bot, causing it to travel in a straight line on the ground, bouncing off walls. The Boom Bot will lock on to any enemies in it frontal cone and chase them, exploding for heavy damage if it reaches them."),
-        Ability(
-            'Paint Shells',
-            '200',
-            '2',
-            'assets/images/agents/abilities/charges/2.png',
-            '-RUgeNH7Cuw',
-            'Q',
-            "INSTANTLY throw a Blast Pack that will stick to surfaces. RE-USE the ability after deployment to detonate, damaging and moving anything hit."),
-        Ability(
-            'Blast Pack',
-            'Free',
-            '1',
-            'assets/images/agents/abilities/charges/1.png',
-            'yz9x4Ypf0SI',
-            'E',
-            "EQUIP a cluster grenade. FIRE to throw the grenade, which does damage and creates sub-munitions, each doing damage to anyone in their range."),
-        Ability(
-            'Showstopper',
-            '6 Points',
-            '1',
-            'assets/images/agents/abilities/charges/1.png',
-            'rZAun19tD9E',
-            'X',
-            "EQUIP a rocket launcher. FIRE shoots a rocket that does massive area damage on contact with anything.")
-      ],
-      "Raze explodes out of Brazil with her big personality and big guns. With her blunt-force-trauma playstyle, she excels at flushing entrenched enemies and clearing tight spaces with a generous dose of “boom.”"),
-  Agent(
-      'Cypher',
-      'Sentinel',
-      'A',
-      'Morocco',
-      [
-        Ability(
-            'Trapwire',
-            '200',
-            '2',
-            'assets/images/agents/abilities/charges/2.png',
-            'saHuEGcGpYU',
-            'C',
-            "EQUIP a trapwire. FIRE to place a desctuctible and covert tripwire at the targeted location, creating a line that spans between the placed location and the wall opposite. Enemy players who cross a tripwire will be tethered, and dazed after a short period if they do not destroy the device in time. This ability can be picked up to be REDEPLOYED."),
-        Ability(
-            'Cyber Cage',
-            '100',
-            '2',
-            'assets/images/agents/abilities/charges/2.png',
-            'Jh28VPiVWMI',
-            'Q',
-            "EQUIP a cyber cage. FIRE to toss the cyber cage in front of Cypher. ACTIVATE to create a zone that blocks vision and slows enemies who pass through it."),
-        Ability(
-            'Spycam',
-            'Free',
-            '1',
-            'assets/images/agents/abilities/charges/1.png',
-            'QnF9f-sByQE',
-            'E',
-            "EQUIP a spycam. FIRE to place the spycam at the targeted location. RE-USE this ability to take control of the camera's view. While in control of the camera, FIRE to shoot a marking dart. This dart will reveal the location of any player struck by the dart."),
-        Ability(
-            'Neural Theft',
-            '7 Points',
-            '1',
-            'assets/images/agents/abilities/charges/1.png',
-            '4Y_mdf38v_A',
-            'X',
-            "INSTANTLY use on a dead enemy player in your crosshairs to reveal the location of all living enemy players.")
-      ],
-      "The Moroccan information broker, Cypher is a one-man surveillance network who keeps tabs on the enemy's every move. No secret is safe. No maneuver goes unseen. Cypher is always watching."),
-  Agent(
-      'Sage',
-      'Sentinel',
-      'S',
-      'China',
-      [
-        Ability(
-            'Barrier Orb',
-            '300',
-            '1',
-            'assets/images/agents/abilities/charges/1.png',
-            'nZRCqqRWzjs',
-            'C',
-            "EQUIP a barrier orb. FIRE places a solid wall. ALT FIRE rotates the targeter."),
-        Ability(
-            'Slow Orb',
-            '100',
-            '2',
-            'assets/images/agents/abilities/charges/2.png',
-            'pXIhQpOXd6A',
-            'Q',
-            "EQUIP a slowing orb. FIRE to throw a slowing orb forward that detonates upon landing, creating a lingering field that slows players caught inside of it."),
-        Ability(
-            'Healing Orb',
-            'Free',
-            '1',
-            'assets/images/agents/abilities/charges/1.png',
-            'tHQQZ2oWdlk',
-            'E',
-            "EQUIP a healing orb. FIRE with your crosshairs over a damaged ally to activate a heal-over-time on them. ALT FIRE while Sage is damaged to activate a self heal-over-time."),
-        Ability(
-            'Resurrection',
-            '7 Points',
-            '1',
-            'assets/images/agents/abilities/charges/1.png',
-            'SvtD0G-u44Y',
-            'X',
-            "EQUIP a resurrection ability. FIRE with your crosshairs placed over a dead ally to begin resurrecting them. After a brief channel, the ally will be brought back to life with full health.")
-      ],
-      "The stronghold of China, Sage creates safety for herself and her team wherever she goes. Able to revive fallen friends and stave off aggressive pushes, she provides a calm center to a hellish fight."),
-  Agent(
-      'Sova',
-      'Initiator',
-      'A',
-      'Russia',
-      [
-        Ability(
-            'Owl Drone',
-            '300',
-            '1',
-            'assets/images/agents/abilities/charges/1.png',
-            '6vX7vhhXrDA',
-            'C',
-            "EQUIP an owl drone. FIRE to deploy and take control of movement of the drone. While in control of the drone, FIRE to shoot a marking dart. This dart will reveal the location of any player struck by the dart."),
-        Ability(
-            'Shock Bolt',
-            '100',
-            '2',
-            'assets/images/agents/abilities/charges/2.png',
-            'GE_AyjdPcNA',
-            'Q',
-            "EQUIP a bow with a shock bolt. FIRE to send the explosive bolt forward, detonating upon collision and damaging players nearby. HOLD FIRE to extend the range of teh projectile. ALTERNATE FIRE to add up to two bounces to this arrow."),
-        Ability(
-            'Recon Bolt',
-            'Free',
-            '1',
-            'assets/images/agents/abilities/charges/1.png',
-            '4WX_Ad7dQ9A',
-            'E',
-            "EQUIP a bow with recon boly. FIRE to send the recon bolt forward, activating upon collision and revealing the location of nearby enemies caught in the line of sight of the bolt. Enemies can destroy this bolt. HOLD FIRE to extend the range of the projective. ALTERNATE FIRE to add up to two bounces to this arrow."),
-        Ability(
-            'Hunters Fury',
-            '7 Points',
-            '1',
-            'assets/images/agents/abilities/charges/1.png',
-            '-Qjs3b4X5jg',
-            'X',
-            "EQUIP a bow with three long-range, wall-piercing energy blasts. FIRE to release an energy blast in a line in front of Sova, dealing damage and revealing the location of enemies caught in the line. This ability can be RE-USED up to two more times while the ability timer is active.")
-      ],
-      "Born from the eternal winter of Russia's tundra, Sova tracks, finds, and eliminates enemies with ruthless efficiency and precision. His custom bow and incredible scouting abilities ensure that even if you run, you cannot hide."),
-  Agent(
-      'Viper',
-      'Controller',
-      'C',
-      'USA',
-      [
-        Ability(
-            'Snake Bite',
-            '100',
-            '2',
-            'assets/images/agents/abilities/charges/2.png',
-            'ozvJObMxnbY',
-            'C',
-            "EQUIP a chemical launcher. FIRE to launch a canister that shatters upon hitting the floor, creating a lingering chemical zone that damages and slows enemies."),
-        Ability(
-            'Poison Cloud',
-            '200',
-            '1',
-            'assets/images/agents/abilities/charges/1.png',
-            'W_7hdkvJ_AE',
-            'Q',
-            "EQUiP a gas emitter. FIRE to throw the emitter that perpetually remains throughout the round. RE-USE the ability to create a toxic gas cloud at the cost of fuel. This ability can be RE-USED more than once and can be picked up to be REDEPLOYED."),
-        Ability(
-            'Toxic Screen',
-            'Free',
-            '1',
-            'assets/images/agents/abilities/charges/1.png',
-            '3xRd7U2azeI',
-            'E',
-            "EQUIP a gas emitter launcher. FIRE to deploy a long line of gas emitters. RE-USE the ability to create a tall wall of toxic gas at the cost of fuel. This ability can be RE-USED more than once."),
-        Ability(
-            'Vipers Pit',
-            '7 Points',
-            '1',
-            'assets/images/agents/abilities/charges/1.png',
-            'nQaMCAtftpQ',
-            'X',
-            "EQUIP a chemical sprayer. FIRE to spray a chemical cloud in all directions around Viper, creating a large cloud that reduces the vision range and maximum health of players inside of it.")
-      ],
-      "The American chemist, Viper deploys an array of poisonous chemical devices to control the battlefield and cripple the enemy's vision. If the toxins don't kill her prey, her mind games surely will."),
-  Agent(
-      'Phoenix',
-      'Duelist',
-      'B',
-      'UK',
-      [
-        Ability(
-            'Blaze',
-            '200',
-            '1',
-            'assets/images/agents/abilities/charges/1.png',
-            'EkDGsyCHjmE',
-            'C',
-            "EQUIP a flame wall. FIRE to create a line of flame that moves forward, creating a wall of fire that blocks vision and damages players passing through it. HOLD FIRE to bend the wall in the direction of your crosshair."),
-        Ability(
-            'Curveball',
-            '200',
-            '2',
-            'assets/images/agents/abilities/charges/2.png',
-            'apxrRIFXO2Y',
-            'Q',
-            "EQUIP a flare orb that takes a curving path and detonates shortly after throwing. FIRE to curve the flare orb to the left, detonating and blinding any player who sees the orb. ALTERNATE FIRE to curve the flare orb to the right."),
-        Ability(
-            'Hot Hands',
-            'Free',
-            '1',
-            'assets/images/agents/abilities/charges/1.png',
-            'DB_O4N3Lr40',
-            'E',
-            "EQUIP a fireball. FIRE to throw a fireball that explodes after a set amount of time or upon hitting the ground, creating a lingering fire zone that damages enemies."),
-        Ability(
-            'Run it Back',
-            '6 Points',
-            '1',
-            'assets/images/agents/abilities/charges/1.png',
-            'haZbXfIhOOU',
-            'X',
-            "INSTANTLY place a marker at Phoenix's location. while this ability is active, dying or allowing the timer to expire will end this ability and bring Phoenix back to this location with full health.")
-      ],
-      "Hailing from the U.K., Phoenix's star power shines through in his fighting style, igniting the battlefield with flash and flare. Whether he's got backup or not, he'll rush into a fight on his own terms."),
-  Agent(
-      'Jett',
-      'Duelist',
-      'C',
-      'S.Korea',
-      [
-        Ability(
-            'Cloudburst',
-            '100',
-            '3',
-            'assets/images/agents/abilities/charges/3.png',
-            'SIYFZGswMbc',
-            'C',
-            "INSTANTLY throw a projectile that expands into a brief vision-blocking cloud on impact with a surfact. HOLD the ability key to curve the smoke in the direction of your crosshair."),
-        Ability(
-            'Updraft',
-            '200',
-            '2',
-            'assets/images/agents/abilities/charges/2.png',
-            'laqCo3wrdd4',
-            'Q',
-            "INSTANTLY propel Jett high into the air."),
-        Ability(
-            'Tailwind',
-            'Free',
-            '1',
-            'assets/images/agents/abilities/charges/1.png',
-            '93CK9fDyD5A',
-            'E',
-            "INSTANTLY propel Jett in the direction she is moving. If Jett is standing still she will propel forward."),
-        Ability(
-            'Blade Storm',
-            '6 Points',
-            '1',
-            'assets/images/agents/abilities/charges/1.png',
-            'fIakwAMXoG8',
-            'X',
-            "EQUIP a set of highly accurate throwing knives that recharge on killing an opponent. FIRE to throw a single knife at your target. ALTERNATE FIRE to throw all remaining daggers at your target.")
-      ],
-      "Representing her home country of South Korea, Jett's agile and evasive fighting style lets her take risks no one else can. She runs circles around every skirmish, cutting enemies before they even know what hit them."),
-  Agent(
-      'Omen',
-      'Controller',
-      'A',
-      'Void',
-      [
-        Ability(
-            'Shrouded Step',
-            '100',
-            '2',
-            'assets/images/agents/abilities/charges/2.png',
-            'AA_pcppmevY',
-            'C',
-            "EQUIP a shadow walk ability and see its range indicator. FIRE to begin a brief channel, then teleport to the marked location."),
-        Ability(
-            'Paranoia',
-            '200',
-            '1',
-            'assets/images/agents/abilities/charges/1.png',
-            'ur3eailMCbQ',
-            'Q',
-            "INSTANTLY fire a shadow projectile forward, briefly reducing the vision range of all players it touches. This projectile can pass straight through walls."),
-        Ability(
-            'Dark Cover',
-            'Free',
-            '2',
-            'assets/images/agents/abilities/charges/2.png',
-            'Y6n8hWH3OYY',
-            'E',
-            "EQUIP a shadow orb and see its range indicator. FIRE to throw the shadow orb to the marked location, creating a long-lasting shadow sphere that blocks vision. HOLD ALTERNATE FIRE while targeting to move the marker further away. HOLD the ability key while targeting to move the marker closer."),
-        Ability(
-            'From the Shadows',
-            '7 Points',
-            '1',
-            'assets/images/agents/abilities/charges/1.png',
-            '_A_7NnTCc_g',
-            'X',
-            "EQUIP a tactical map. FIRE to begin teleporting to the selected location. While teleporting, Omen will appear as a Shade that can be destroyed by an enemy to cancel his teleport.")
-      ],
-      "A phantom of a memory, Omen hunts in the shadows. He renders enemies blind, teleports across the field, then lets paranoia take hold as his foe scrambles to learn where he might strike next."),
-  Agent(
-      'Reyna',
-      'Duelist',
-      'A',
-      'Mexico',
-      [
-        Ability(
-            'Leer',
-            '200',
-            '2',
-            'assets/images/agents/abilities/charges/2.png',
-            'fNKwnXMg5aM',
-            'C',
-            "EQUIP an ethereal destructible eye. ACTIVATE to cast the eye a short distance forward. The eye will Nearsight all enemies who look at it."),
-        Ability(
-            'Devour',
-            '100',
-            '/4',
-            'assets/images/agents/abilities/charges/4.png',
-            'ltX5w5lSQic',
-            'Q',
-            "Enemies killed by Reyna leave behind Soul Orbs that last 3 seconds. INSTANTLY consume a nearby soul orb, rapidly healing for a short duration. Health gained through this skill exceeding 100 will decay over time. If EMPRESS is active, this skill will automatically cast and not consume the orb."),
-        Ability(
-            'Dismiss',
-            'Free',
-            '/4',
-            'assets/images/agents/abilities/charges/4.png',
-            'sqcGRWJwfP0',
-            'E',
-            "INSTANTLY consume a nearby soul orb, becoming intangible for a short duration. If EMPRESS is active, also become invisible."),
-        Ability(
-            'Empress',
-            '6 Points',
-            '1',
-            'assets/images/agents/abilities/charges/1.png',
-            '9AxLprV1Vqo',
-            'X',
-            "INSTANTLY enter a frenzy, increasing firing speed, equip and reload speed dramatically. Scoring a kill renews the duration.")
-      ],
-      "Forged in the heart of Mexico, Reyna dominates single combat, popping off with each kill she scores. Her capability is only limited by her raw skill, making her highly dependent on performance."),
-  Agent(
-      'Brimstone',
-      'Controller',
-      'B',
-      'USA',
-      [
-        Ability(
-            'Stim Beacon',
-            '100',
-            '2',
-            'assets/images/agents/abilities/charges/2.png',
-            'ORnv5UfDzBM',
-            'C',
-            "EQUIP a stim beacon. FIRE to toss the stim beacon in front of Brimstone. Upon landing, the stim beacon will create a field that grants players RapidFire."),
-        Ability(
-            'Incendiary',
-            '200',
-            '1',
-            'assets/images/agents/abilities/charges/1.png',
-            '7vjdkOdpEas',
-            'Q',
-            "EQUIP an incendiary grenade launcher. FIRE to launch a grenade that detonates as it comes to a rest on the floor, creating a lingering fire zone that damages players within the zone."),
-        Ability(
-            'Sky Smoke',
-            'Free',
-            '3',
-            'assets/images/agents/abilities/charges/3.png',
-            'I2__jdzteUY',
-            'E',
-            "EQUIP a tactical map. FIRE to set locations where Brimstone's smoke clouds will land. ALTERNATE FIRE to confirm, launching long-lasting smoke clouds that block vision in the selected area."),
-        Ability(
-            'Orbital Strike',
-            '6 Points',
-            '1',
-            'assets/images/agents/abilities/charges/1.png',
-            'jC_8aGTWW0k',
-            'X',
-            "EQUIP a tactical map. FIRE to launch a lingering orbital strike laster at the selected location, dealing high damage-over-time to players caught in the selected area.")
-      ],
-      "Joining from the USA, Brimstone's orbital arsenal ensures his squad always has the advantage. His ability to deliver utility precisely and from a distance make him an unmatched boots-on-the-ground commander."),
-];
-
-const API_KEY = "AIzaSyAAJ5he_Zs_8DYXkBCFrFrgtRNA1WcPXJ4";
+const YOUTUBE_API_KEY = "AIzaSyAAJ5he_Zs_8DYXkBCFrFrgtRNA1WcPXJ4";
 
 const ADMOB_APP_ID = 'ca-app-pub-7091168394964981~2110788989';
 const BANNER_AD_UNIT = 'ca-app-pub-7091168394964981/1423219818';

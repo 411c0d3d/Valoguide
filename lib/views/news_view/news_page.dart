@@ -93,7 +93,6 @@ class CardsList extends StatelessWidget {
     return ListView.separated(
       itemCount: eventsList?.listLength(),
       itemBuilder: (context, index) {
-//        if (index < 2)
         return HighPostCard(
           index: index,
           eventsList: eventsList,
@@ -115,7 +114,7 @@ class HighPostCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 270,
+      height: (MediaQuery.of(context).size.height / 3),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: GestureDetector(
@@ -188,13 +187,13 @@ class HighPostCard extends StatelessWidget {
                               children: <Widget>[
                                 Padding(
                                     padding: const EdgeInsets.only(
-                                        left: 20.0, top: 12),
+                                        left: 5.0, top: 12),
                                     child: (eventsList.getPostAt(index) != null)
                                         ? (eventsList.getPostAt(index).author !=
                                                 '')
                                             ? Container(
                                                 padding: EdgeInsets.symmetric(
-                                                    horizontal: 22.0,
+                                                    horizontal: 8.0,
                                                     vertical: 6.0),
                                                 decoration: BoxDecoration(
                                                     color: Colors.black
@@ -229,13 +228,13 @@ class HighPostCard extends StatelessWidget {
                                         : null),
                                 Padding(
                                     padding: const EdgeInsets.only(
-                                        left: 20.0, top: 12),
+                                        left: 15.0, top: 12),
                                     child: (eventsList.getPostAt(index) != null)
                                         ? (eventsList.getPostAt(index).date !=
                                                 '')
                                             ? Container(
                                                 padding: EdgeInsets.symmetric(
-                                                    horizontal: 22.0,
+                                                    horizontal: 8.0,
                                                     vertical: 6.0),
                                                 decoration: BoxDecoration(
                                                     color: Colors.black

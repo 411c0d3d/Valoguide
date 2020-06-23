@@ -69,8 +69,8 @@ class Ads {
 
   static _createInterstitialAd() {
     interstitialAd = InterstitialAd(
-//        adUnitId: INTERSTITIAL_AD_UNIT,
-        adUnitId: InterstitialAd.testAdUnitId,
+        adUnitId: INTERSTITIAL_AD_UNIT,
+//        adUnitId: InterstitialAd.testAdUnitId,
         targetingInfo: targetingInfo,
         listener: (MobileAdEvent event) {
           if (event == MobileAdEvent.loaded) {
@@ -111,8 +111,9 @@ const List<String> adMobKeyWords = [
   "marketing",
   "eSport",
   'gaming',
+  "dating",
   "insurance",
-  "stock",
+  "university",
   "trading",
   "shopping",
   "hardware",

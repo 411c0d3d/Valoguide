@@ -1,7 +1,7 @@
 name: Valoguide
 description: A valorant companion App for the community.
 
-version: 1.0.0+5
+version: 1.0.0+6
 
 environment:
   sdk: ">=2.2.2 <3.0.0"

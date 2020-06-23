@@ -66,7 +66,7 @@ class _PostDetailsState extends State<PostDetails> {
                     Padding(
                       padding: const EdgeInsets.all(5.0),
                       child: Container(
-                        height: 250,
+                        height: (MediaQuery.of(context).size.height / 3.5),
                         child: (widget.args.post.cover != '')
                             ? FadeInImage.assetNetwork(
                                 placeholder:

@@ -18,10 +18,11 @@ class _HomePageState extends State<HomePage> {
   double aspectRatio;
   final RateMyApp rateMyApp = RateMyApp(
     preferencesPrefix: 'rateMyApp_',
-    minDays: 3,
-    minLaunches: 7,
+    // TODO : change to 5 days 11 launches
+    minDays: 1,
+    minLaunches: 2,
     remindDays: 2,
-    remindLaunches: 5,
+    remindLaunches: 2,
     googlePlayIdentifier: 'com.Valoguide',
   );
   @override
