@@ -18,78 +18,48 @@ class _HomePageState extends State<HomePage> {
   double aspectRatio;
   final RateMyApp rateMyApp = RateMyApp(
     preferencesPrefix: 'rateMyApp_',
-    // TODO : change to 5 days 11 launches
-    minDays: 1,
-    minLaunches: 2,
+    minDays: 2,
+    minLaunches: 10,
     remindDays: 2,
-    remindLaunches: 2,
+    remindLaunches: 10,
     googlePlayIdentifier: 'com.Valoguide',
   );
   @override
   void initState() {
     // TODO: implement initState
     Ads.hideBannerAd();
-
-    super.initState();
     rateMyApp.init().then((_) {
       if (rateMyApp.shouldOpenDialog) {
-        rateMyApp.showStarRateDialog(
+        rateMyApp.showRateDialog(
           context,
-          title: 'Hi Agent!', // The dialog title.
-          message:
-              " 🙏🏼 Let's borrow a moment for a quick rating.", // The dialog message.
-          // contentBuilder: (context, defaultContent) => content, // This one allows you to change the default dialog content.
-          actionsBuilder: (context, stars) {
-            // Triggered when the user updates the star rating.
-            return [
-              // Return a list of actions (that will be shown at the bottom of the dialog).
-              FlatButton(
-                child: Text('Submit'),
-                onPressed: () {
-                  print('Thanks for the ' +
-                      (stars == null ? '0' : stars.round().toString()) +
-                      ' star(s) !');
-                  if (stars >= 3) {
-                    showDialog(
-                        context: context,
-                        builder: (_) {
-                          return AlertDialog(
-                            content: Container(
-                              color: Colors.black45.withOpacity(0.7),
-                              child: Text(
-                                'Leaving a review would be appreciated ...',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: "Tisa Sans"),
-                              ),
-                            ),
-                          );
-                        }).then((value) {
-                      rateMyApp.launchStore();
-                    });
-                    rateMyApp.callEvent(RateMyAppEventType.rateButtonPressed);
-                    Navigator.pop<RateMyAppDialogButton>(
-                        context, RateMyAppDialogButton.rate);
-                  }
-                },
-              ),
-            ];
+          title: '🎖Hi Agent !', // T// he dialog title.
+          message: "\tLet's rate your experience.☘️",
+          rateButton: 'RATE 🌟', // The dialog "rate" button text.
+          laterButton: 'LATER ⏳',
+          listener: (button) {
+            // The button click listener (useful if you want to cancel the click event).
+            switch (button) {
+              case RateMyAppDialogButton.rate:
+                rateMyApp.callEvent(RateMyAppEventType.rateButtonPressed);
+                Navigator.pop<RateMyAppDialogButton>(
+                    context, RateMyAppDialogButton.rate);
+                rateMyApp.launchStore();
+                break;
+              case RateMyAppDialogButton.later:
+                print('Clicked on "Later".');
+                break;
+            }
+            return true; // Return false if you want to cancel the click event.
           },
+          dialogStyle: DialogStyle(), // Custom dialog styles.
           ignoreIOS:
-              true, // Set to false if you want to show the native Apple app rating dialog on iOS.
-          dialogStyle: DialogStyle(
-            // Custom dialog styles.
-            titleAlign: TextAlign.center,
-            messageAlign: TextAlign.center,
-            messagePadding: EdgeInsets.only(bottom: 20),
-          ),
-          starRatingOptions:
-              StarRatingOptions(), // Custom star bar rating options.
-          onDismissed: () => rateMyApp.callEvent(RateMyAppEventType
-              .laterButtonPressed), // Called when the user dismissed the dialog (either by taping outside or by pressing the "back" button).
+              true, // Set to false if you want to show the Apple's native app rating dialog on iOS.
+          onDismissed: () =>
+              rateMyApp.callEvent(RateMyAppEventType.laterButtonPressed),
         );
       }
     });
+    super.initState();
   }
 
   @override

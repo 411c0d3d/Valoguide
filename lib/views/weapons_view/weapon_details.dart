@@ -44,7 +44,8 @@ class _WeaponDetailsState extends State<WeaponDetails> {
       flags: YoutubePlayerFlags(
         autoPlay: false,
         mute: false,
-        controlsVisibleAtStart: false,
+        hideControls: true,
+        controlsVisibleAtStart: true,
       ),
     )..addListener(listener);
     _playerState = PlayerState.unknown;
@@ -124,8 +125,8 @@ class _WeaponDetailsState extends State<WeaponDetails> {
                           width: MediaQuery.of(context).size.width,
                           color: Colors.black45.withOpacity(0.8),
                           child: YoutubePlayer(
-                            thumbnail: Image.network(
-                                "https://i.redd.it/qg4enmbd90t41.png"),
+                            thumbnail: Image.asset(
+                                'assets/images/background/loading.png'),
                             controller: _controller,
                             onReady: () {
                               _isPlayerReady = true;

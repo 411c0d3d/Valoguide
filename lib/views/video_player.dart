@@ -26,7 +26,8 @@ class _VideoPlayerState extends State<VideoPlayer> {
       flags: YoutubePlayerFlags(
         autoPlay: false,
         mute: false,
-        controlsVisibleAtStart: false,
+        hideControls: true,
+        controlsVisibleAtStart: true,
       ),
     )..addListener(listener);
     _playerState = PlayerState.unknown;

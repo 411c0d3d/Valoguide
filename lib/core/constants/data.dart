@@ -401,8 +401,8 @@ final List<Agent> agents = [
         Ability(
             'Aftershock',
             '100',
-            '2',
-            'assets/images/agents/abilities/charges/2.png',
+            '1',
+            'assets/images/agents/abilities/charges/1.png',
             '2TK7nw3B0kA',
             'C',
             "EQUIP a fusion charge. FIRE the charge to set a slow-acting burst through the wall. The burst does heavy damage to anyone caught in its area."),
