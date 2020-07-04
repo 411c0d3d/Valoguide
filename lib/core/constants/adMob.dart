@@ -47,6 +47,25 @@ class Ads {
     );
   }
 
+  static _createInterstitialAd() {
+    interstitialAd = InterstitialAd(
+//        adUnitId: InterstitialAd.testAdUnitId,
+        adUnitId: INTERSTITIAL_AD_UNIT,
+        targetingInfo: targetingInfo,
+        listener: (MobileAdEvent event) {
+          if (event == MobileAdEvent.loaded) {
+            interstitialIsShown = true;
+            interstitialIsGoingToBeShown = false;
+          } else if (event == MobileAdEvent.failedToLoad) {
+            interstitialIsShown = false;
+            interstitialIsGoingToBeShown = false;
+          } else if (event == MobileAdEvent.closed) {
+            interstitialAd..load();
+          }
+          print("InterstitialAd event is $event");
+        });
+  }
+
   static void showBannerAd([State state]) {
     if (state != null && !state.mounted) return;
     if (bannerAd == null) _createBannerAd();
@@ -65,25 +84,6 @@ class Ads {
       });
       bannerAd = null;
     }
-  }
-
-  static _createInterstitialAd() {
-    interstitialAd = InterstitialAd(
-        adUnitId: INTERSTITIAL_AD_UNIT,
-//        adUnitId: InterstitialAd.testAdUnitId,
-        targetingInfo: targetingInfo,
-        listener: (MobileAdEvent event) {
-          if (event == MobileAdEvent.loaded) {
-            interstitialIsShown = true;
-            interstitialIsGoingToBeShown = false;
-          } else if (event == MobileAdEvent.failedToLoad) {
-            interstitialIsShown = false;
-            interstitialIsGoingToBeShown = false;
-          } else if (event == MobileAdEvent.closed) {
-            interstitialAd..load();
-          }
-          print("InterstitialAd event is $event");
-        });
   }
 
   static void showInterstitialAd([State state]) {
@@ -109,12 +109,13 @@ class Ads {
 
 const List<String> adMobKeyWords = [
   "marketing",
-  "eSport",
+  "game",
   'gaming',
   "dating",
   "insurance",
   "university",
   "trading",
   "shopping",
-  "hardware",
+  "amazon",
+  "premium",
 ];

@@ -32,7 +32,7 @@ class _WeaponsPageState extends State<WeaponsPage> {
           child: DecoratedBox(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("assets/images/background/bg00.png"),
+                    image: AssetImage("assets/images/background/bg00.jpg"),
                     fit: BoxFit.cover),
               ),
               child: Scaffold(
@@ -48,6 +48,29 @@ class _WeaponsPageState extends State<WeaponsPage> {
                 body: SingleChildScrollView(
                   child: Column(
                     children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(16.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.black12,
+                                      offset: Offset(3.0, 6.0),
+                                      blurRadius: 10.0)
+                                ]),
+                            child: AspectRatio(
+                              aspectRatio: (MediaQuery.of(context).size.width) /
+                                  (MediaQuery.of(context).size.height / 3),
+                              child: Image.asset(
+                                  'assets/images/legends/weaponsLegend.jpg',
+                                  fit: BoxFit.cover),
+                            ),
+                          ),
+                        ),
+                      ),
                       ConfigurableExpansionTile(
                           headerBackgroundColorStart:
                               Colors.black45.withOpacity(0.4),

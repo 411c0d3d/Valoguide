@@ -37,7 +37,7 @@ class _NewsPageState extends State<NewsPage> {
           child: DecoratedBox(
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("assets/images/background/bg00.png"),
+                  image: AssetImage("assets/images/background/bg00.jpg"),
                   fit: BoxFit.cover),
             ),
             child: Scaffold(
@@ -68,9 +68,9 @@ class _NewsPageState extends State<NewsPage> {
                     ? Shimmer.fromColors(
                         baseColor: Colors.black45.withOpacity(0.8),
                         highlightColor: Colors.blueGrey.withOpacity(0.8),
-                        child: CardsList(eventsList: newsPlaceHolder),
+                        child: CardsList(newsList: newsPlaceHolder),
                       )
-                    : CardsList(eventsList: newsList),
+                    : CardsList(newsList: newsList),
               ),
             ),
           ),
@@ -83,19 +83,19 @@ class _NewsPageState extends State<NewsPage> {
 class CardsList extends StatelessWidget {
   const CardsList({
     Key key,
-    @required this.eventsList,
+    @required this.newsList,
   }) : super(key: key);
 
-  final dynamic eventsList;
+  final dynamic newsList;
 
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      itemCount: eventsList?.listLength(),
+      itemCount: newsList?.listLength(),
       itemBuilder: (context, index) {
         return HighPostCard(
           index: index,
-          eventsList: eventsList,
+          newsList: newsList,
         );
       },
       separatorBuilder: (context, index) => SizedBox(
@@ -107,9 +107,9 @@ class CardsList extends StatelessWidget {
 
 class HighPostCard extends StatelessWidget {
   final index;
-  final eventsList;
+  final newsList;
 
-  const HighPostCard({Key key, @required this.index, @required this.eventsList})
+  const HighPostCard({Key key, @required this.index, @required this.newsList})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -121,8 +121,7 @@ class HighPostCard extends StatelessWidget {
           behavior: HitTestBehavior.translucent,
           onTap: () {
             RoutArgument routArgument = RoutArgument();
-            routArgument.postArgument =
-                PostArgument(eventsList.getPostAt(index));
+            routArgument.postArgument = PostArgument(newsList.getPostAt(index));
             Navigator.pushNamed(context, '/postDetails',
                 arguments: routArgument);
           },
@@ -142,8 +141,8 @@ class HighPostCard extends StatelessWidget {
                   fit: StackFit.expand,
                   children: <Widget>[
                     FadeInImage.assetNetwork(
-                        placeholder: "assets/images/background/loading.png",
-                        image: eventsList.getPostAt(index).cover,
+                        placeholder: "assets/images/background/loading.jpg",
+                        image: newsList.getPostAt(index).cover,
                         fit: BoxFit.cover),
                     Align(
                       alignment: Alignment.bottomLeft,
@@ -158,7 +157,7 @@ class HighPostCard extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(
                                   left: 10.0, right: 5, top: 20, bottom: 12),
-                              child: (eventsList.getPostAt(index).title != '')
+                              child: (newsList.getPostAt(index).title != '')
                                   ? Container(
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 22.0, vertical: 6.0),
@@ -167,7 +166,7 @@ class HighPostCard extends StatelessWidget {
                                           borderRadius:
                                               BorderRadius.circular(10.0)),
                                       child: Text(
-                                        eventsList.getPostAt(index).title,
+                                        newsList.getPostAt(index).title,
                                         style: TextStyle(
                                           color: Color(0xFF00FFA4),
                                           fontSize:
@@ -188,8 +187,8 @@ class HighPostCard extends StatelessWidget {
                                 Padding(
                                     padding: const EdgeInsets.only(
                                         left: 5.0, top: 12),
-                                    child: (eventsList.getPostAt(index) != null)
-                                        ? (eventsList.getPostAt(index).author !=
+                                    child: (newsList.getPostAt(index) != null)
+                                        ? (newsList.getPostAt(index).author !=
                                                 '')
                                             ? Container(
                                                 padding: EdgeInsets.symmetric(
@@ -202,7 +201,7 @@ class HighPostCard extends StatelessWidget {
                                                         BorderRadius.circular(
                                                             10.0)),
                                                 child: Text(
-                                                  eventsList
+                                                  newsList
                                                       .getPostAt(index)
                                                       .author,
                                                   style: TextStyle(
@@ -229,9 +228,8 @@ class HighPostCard extends StatelessWidget {
                                 Padding(
                                     padding: const EdgeInsets.only(
                                         left: 15.0, top: 12),
-                                    child: (eventsList.getPostAt(index) != null)
-                                        ? (eventsList.getPostAt(index).date !=
-                                                '')
+                                    child: (newsList.getPostAt(index) != null)
+                                        ? (newsList.getPostAt(index).date != '')
                                             ? Container(
                                                 padding: EdgeInsets.symmetric(
                                                     horizontal: 8.0,
@@ -244,7 +242,7 @@ class HighPostCard extends StatelessWidget {
                                                             10.0)),
                                                 child: Text(
                                                   " - " +
-                                                      eventsList
+                                                      newsList
                                                           .getPostAt(index)
                                                           .date,
                                                   style: TextStyle(

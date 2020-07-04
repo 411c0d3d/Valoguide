@@ -1,3 +1,5 @@
+import 'package:Valoguide/core/constants/data.dart';
+import 'package:Valoguide/core/models/proTipsList_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -20,6 +22,15 @@ class RootView extends StatelessWidget {
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider<ProTipsListModel>(
+          create: (_) {
+            final ProTipsListModel proTipsList =
+                store.invokeModel(ProTipsListModel);
+            proTipsList.getProTips(agentNames[8], maps[1]['name']);
+            return proTipsList;
+          },
+          lazy: false,
+        ),
         ChangeNotifierProvider<NewsListModel>(
           create: (_) {
             final NewsListModel postsList = store.invokeModel(NewsListModel);

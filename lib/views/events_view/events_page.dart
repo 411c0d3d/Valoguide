@@ -22,8 +22,6 @@ class _EventsPageState extends State<EventsPage> {
 
   final WillPopCallback onWillPop = () {
     Ads?.hideBannerAd();
-    if (new Random().nextInt(2) == new Random().nextInt(2))
-      Ads.showInterstitialAd();
     return Future.value(true);
   };
 
@@ -40,7 +38,7 @@ class _EventsPageState extends State<EventsPage> {
           child: DecoratedBox(
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("assets/images/background/bg00.png"),
+                  image: AssetImage("assets/images/background/bg00.jpg"),
                   fit: BoxFit.cover),
             ),
             child: Scaffold(
@@ -118,7 +116,7 @@ class CardsList extends StatelessWidget {
                                 child: CircleAvatar(
                                   child: FadeInImage.assetNetwork(
                                     placeholder:
-                                        "assets/images/background/loader02.gif",
+                                        "assets/images/background/loader02.jpg",
                                     image: eventsList.getEventAt(index).logo,
                                   ),
                                 ),
@@ -215,7 +213,7 @@ class CardsList extends StatelessWidget {
                                         return CircleAvatar(
                                           child: FadeInImage.assetNetwork(
                                             placeholder:
-                                                "assets/images/background/loader02.gif",
+                                                "assets/images/background/loader02.jpg",
                                             image: team,
                                           ),
                                         );

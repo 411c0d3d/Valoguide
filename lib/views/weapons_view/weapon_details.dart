@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'dart:ui';
 import 'package:Valoguide/core/constants/adMob.dart';
+import 'package:Valoguide/core/store/store.dart';
 import 'package:configurable_expansion_tile/configurable_expansion_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:Valoguide/core/constants/data.dart';
@@ -30,8 +31,13 @@ class _WeaponDetailsState extends State<WeaponDetails> {
   _onExpansionChanged(bool isExpanded) {
     _controller.reset();
     DefaultCacheManager().emptyCache();
-    if (new Random().nextInt(2) == new Random().nextInt(2))
+    Store.navCounter++;
+    print('____________ navCount : --------- ' + Store.navCounter.toString());
+
+    if (Store.navCounter > 5) {
+      Store.navCounter = 0;
       Ads?.showInterstitialAd();
+    }
   }
 
   @override
@@ -69,8 +75,13 @@ class _WeaponDetailsState extends State<WeaponDetails> {
   @override
   Widget build(BuildContext context) {
     final WillPopCallback onWillPop = () {
-      if (new Random().nextInt(2) == new Random().nextInt(2))
+      Store.navCounter++;
+      print('____________ navCount : --------- ' + Store.navCounter.toString());
+
+      if (Store.navCounter > 5) {
+        Store.navCounter = 0;
         Ads?.showInterstitialAd();
+      }
       return Future.value(true);
     };
     return WillPopScope(
@@ -78,7 +89,7 @@ class _WeaponDetailsState extends State<WeaponDetails> {
       child: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/images/background/bg00.png"),
+              image: AssetImage("assets/images/background/bg00.jpg"),
               fit: BoxFit.cover),
         ),
         child: Scaffold(
@@ -126,7 +137,7 @@ class _WeaponDetailsState extends State<WeaponDetails> {
                           color: Colors.black45.withOpacity(0.8),
                           child: YoutubePlayer(
                             thumbnail: Image.asset(
-                                'assets/images/background/loading.png'),
+                                'assets/images/background/loading.jpg'),
                             controller: _controller,
                             onReady: () {
                               _isPlayerReady = true;
@@ -150,7 +161,7 @@ class _WeaponDetailsState extends State<WeaponDetails> {
                     child: SingleChildScrollView(
                       child: Center(
                         child: Image.asset(
-                            "assets/images/weapons/weaponsCard/${weaponNames[widget.args.weaponType][widget.args.weaponIndex]['name'].toString().toLowerCase()}.png"),
+                            "assets/images/weapons/weaponsCard/${weaponNames[widget.args.weaponType][widget.args.weaponIndex]['name'].toString().toLowerCase()}.jpg"),
                       ),
                     ),
                   ),

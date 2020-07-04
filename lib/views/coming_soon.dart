@@ -21,7 +21,7 @@ class _ComingSoonState extends State<ComingSoon> {
       child: DecoratedBox(
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/images/background/bg00.png"),
+              image: AssetImage("assets/images/background/bg00.jpg"),
               fit: BoxFit.cover),
         ),
         child: Scaffold(
@@ -52,7 +52,7 @@ class _ComingSoonState extends State<ComingSoon> {
                   CircleAvatar(
                     radius: 60,
                     backgroundImage:
-                        AssetImage("assets/images/background/loader02.gif"),
+                        AssetImage("assets/images/background/loader02.jpg"),
                   ),
                   Text(
                     "Coming soon ...",

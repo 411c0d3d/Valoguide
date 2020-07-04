@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
       child: DecoratedBox(
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/images/background/bg01.png"),
+              image: AssetImage("assets/images/background/bg01.jpg"),
               fit: BoxFit.cover),
         ),
         child: Scaffold(
@@ -90,14 +90,57 @@ class _HomePageState extends State<HomePage> {
             children: <Widget>[
               SizedBox(height: 10.0),
               Padding(
-                padding: const EdgeInsets.only(left: 15.0),
-                child: Text(
-                  'Main Dashboard',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+                padding: const EdgeInsets.only(left: 15.0, top: 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(
+                      // PATCH NOTES
+                      'Main Dashboard',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 15.0, top: 0),
+                      child: InkWell(
+                          child: Icon(
+                            Icons.info_outline,
+                          ),
+                          onTap: () {
+                            showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return Dialog(
+                                    insetPadding: EdgeInsets.all(8),
+                                    backgroundColor:
+                                        Colors.black45.withOpacity(0.8),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(16.0),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  color: Colors.black12,
+                                                  offset: Offset(3.0, 6.0),
+                                                  blurRadius: 10.0)
+                                            ]),
+                                        child: AspectRatio(
+                                          aspectRatio: 16 / 9,
+                                          child: Image.asset(
+                                              'assets/images/legends/aboutLegend.jpg',
+                                              fit: BoxFit.cover),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                });
+                          }),
+                    ),
+                  ],
                 ),
               ),
               Expanded(
@@ -160,10 +203,11 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                             DashButton(
-                              dashTitle: 'Events',
-                              route: routes['events'],
-                              dashColor: dashColors['events'],
-                              iconPath: dashIcons['events'],
+                              dashTitle: ''
+                                  'Pro-tips',
+                              route: routes['tips'],
+                              dashColor: dashColors['tips'],
+                              iconPath: dashIcons['tips'],
                             ),
                           ],
                         ),
@@ -196,11 +240,10 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                             DashButton(
-                              dashTitle: ''
-                                  'pro-tips',
-                              route: routes['tips'],
-                              dashColor: dashColors['tips'],
-                              iconPath: dashIcons['tips'],
+                              dashTitle: 'Events',
+                              route: routes['events'],
+                              dashColor: dashColors['events'],
+                              iconPath: dashIcons['events'],
                             ),
                           ],
                         ),
@@ -230,8 +273,8 @@ class DashButton extends StatelessWidget {
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(
-            top: (SizeConfig.blockSizeVertical * 2),
-            bottom: (SizeConfig.blockSizeVertical * 2),
+            top: (SizeConfig.blockSizeVertical * 0.5),
+            bottom: (SizeConfig.blockSizeVertical * 3),
             left: (SizeConfig.blockSizeHorizontal * 3),
             right: (SizeConfig.blockSizeHorizontal * 3)),
         // padding: EdgeInsets.all(0),
@@ -253,9 +296,8 @@ class DashButton extends StatelessWidget {
                     Navigator.pushNamed(context, route);
                   },
                   child: Container(
-                    decoration: BoxDecoration(
-//                          borderRadius: BorderRadius.circular(30.0),
-                        color: Colors.black12.withOpacity(0.4)),
+                    decoration:
+                        BoxDecoration(color: Colors.black12.withOpacity(0.4)),
                     alignment: Alignment.center,
                     padding: EdgeInsets.only(left: 10.0, right: 10.0),
                     child: Column(

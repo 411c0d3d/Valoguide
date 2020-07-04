@@ -1,4 +1,6 @@
 import 'dart:ui';
+import 'package:Valoguide/core/constants/adMob.dart';
+import 'package:Valoguide/core/store/store.dart';
 import 'package:flutter/widgets.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:flutter/material.dart';
@@ -25,19 +27,26 @@ class _MapDetailsState extends State<MapDetails> {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      dynamic height = constraints.maxHeight * 0.75;
-      return Container(
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage(maps[widget.args.mapIndex]['cover']),
-                fit: BoxFit.cover),
-          ),
-          child: BackdropFilter(
-            filter: ImageFilter.blur(
-              sigmaX: 1.3,
-              sigmaY: 1.3,
+    final WillPopCallback onWillPop = () {
+      Store.navCounter++;
+      print('____________ navCount : --------- ' + Store.navCounter.toString());
+
+      if (Store.navCounter > 5) {
+        Store.navCounter = 0;
+        Ads?.showInterstitialAd();
+      }
+      return Future.value(true);
+    };
+    return WillPopScope(
+      onWillPop: onWillPop,
+      child: LayoutBuilder(builder: (context, constraints) {
+        dynamic height = constraints.maxHeight * 0.75;
+        return Container(
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(maps[widget.args.mapIndex]['cover']),
+                  fit: BoxFit.cover),
             ),
             child: Scaffold(
               appBar: AppBar(
@@ -120,13 +129,13 @@ class _MapDetailsState extends State<MapDetails> {
                                         flex: 3,
                                         child: Padding(
                                           padding:
-                                              EdgeInsets.only(top: height / 15),
+                                              EdgeInsets.only(top: height / 17),
                                           child: Text(
                                             'Defenders',
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                                 fontSize: 16,
-                                                color: Color(0xFFff6e6e),
+                                                color: Color(0xFFE53645),
                                                 fontFamily: "valorant"),
                                           ),
                                         ),
@@ -141,7 +150,7 @@ class _MapDetailsState extends State<MapDetails> {
                                               0.1,
                                           child: Image.asset(
                                             "assets/icons/defend.png",
-                                            color: Color(0xFFff6e6e),
+                                            color: Color(0xFFE53645),
                                           ),
                                         ),
                                       ),
@@ -176,7 +185,7 @@ class _MapDetailsState extends State<MapDetails> {
                                         flex: 3,
                                         child: Padding(
                                           padding:
-                                              EdgeInsets.only(top: height / 15),
+                                              EdgeInsets.only(top: height / 17),
                                           child: Text(
                                             'Attackers',
                                             textAlign: TextAlign.center,
@@ -225,8 +234,8 @@ class _MapDetailsState extends State<MapDetails> {
               bottomNavigationBar: Footer(),
             ),
           ),
-        ),
-      );
-    });
+        );
+      }),
+    );
   }
 }

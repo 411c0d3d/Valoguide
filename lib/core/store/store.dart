@@ -1,8 +1,10 @@
 import 'package:Valoguide/core/models/eventList_model.dart';
 import 'package:Valoguide/core/models/model.dart';
 import 'package:Valoguide/core/models/newsList_model.dart';
+import 'package:Valoguide/core/models/proTipsList_model.dart';
 import 'package:Valoguide/core/services/events_service.dart';
 import 'package:Valoguide/core/services/news_service.dart';
+import 'package:Valoguide/core/services/proTips_service.dart';
 
 class Store {
 // Here stored invoked services
@@ -16,8 +18,10 @@ class Store {
   Map<dynamic, Function> _factories = {
     EventsListModel: () => EventsListModel(),
     NewsListModel: () => NewsListModel(),
+    ProTipsListModel: () => ProTipsListModel(),
     NewsService: () => NewsService(),
     EventsService: () => EventsService(),
+    ProTipsService: () => ProTipsService(),
     // TODO : instantiation of services / managers or view models
   };
 

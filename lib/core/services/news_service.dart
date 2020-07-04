@@ -94,9 +94,11 @@ class NewsService {
           .querySelector('a')
           .attributes['href'];
 
-      cover = eventsRow
-          .querySelector('.attachment-post-thumbnail')
-          .attributes['src'];
+      cover = (eventsRow.querySelector('.attachment-post-thumbnail') != null)
+          ? eventsRow
+              .querySelector('.attachment-post-thumbnail')
+              .attributes['src']
+          : eventsRow.querySelector('.attachment-medium').attributes['src'];
 
       http.Response postResponse = await client.get(link);
       if (postResponse.statusCode != 200) return postResponse.body;
@@ -121,10 +123,6 @@ class NewsService {
       posts.add(Post.construct(title, date, content, author, figure, cover));
       content = '';
     }
-//    posts.forEach((post) {
-//      print(
-//          "TITLE : ${post.title},\n DATE : ${post.date}, \n CONTENT : ${post.content} \n AUTHOR : ${post.author},\n  FIGURE : ${post.figure} , Cover : ${post.cover}");
-//    });
     return posts;
   }
 }

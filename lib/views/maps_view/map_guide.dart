@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:Valoguide/core/constants/adMob.dart';
+import 'package:Valoguide/core/store/store.dart';
 import 'package:Valoguide/views/footer.dart';
 import 'package:flutter/material.dart';
 import 'package:Valoguide/core/constants/data.dart';
@@ -18,14 +19,20 @@ class _MapGuideState extends State<MapGuide> {
   @override
   void initState() {
     // TODO: implement initState
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     final WillPopCallback onWillPopFirst = () {
-      if (new Random().nextInt(2) == new Random().nextInt(2))
+      Store.navCounter++;
+      print('____________ navCount : --------- ' + Store.navCounter.toString());
+
+      if (Store.navCounter > 5) {
+        Store.navCounter = 0;
         Ads?.showInterstitialAd();
+      }
       return Future.value(true);
     };
 
@@ -33,6 +40,9 @@ class _MapGuideState extends State<MapGuide> {
         maps[widget.args.mapIndex][widget.args.mapSide].map<Widget>((guide) {
       int index =
           maps[widget.args.mapIndex][widget.args.mapSide].indexOf(guide);
+      print('Index ::: ----- ' + index.toString());
+      List<String> coverPaths;
+      coverPaths = maps[widget.args.mapIndex]['mapCovers'];
       return Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -53,6 +63,17 @@ class _MapGuideState extends State<MapGuide> {
                     color: ((widget.args.mapSide != 'attackers')
                         ? Color(0xFFff6e6e)
                         : Color(0xFF00FFA4))),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Container(
+              height: (MediaQuery.of(context).size.height / 3.5),
+              width: (MediaQuery.of(context).size.width * 0.95),
+              child: Image.asset(
+                coverPaths[index],
+                fit: BoxFit.cover,
               ),
             ),
           ),
@@ -81,7 +102,7 @@ class _MapGuideState extends State<MapGuide> {
       child: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/images/background/bg00.png"),
+              image: AssetImage("assets/images/background/bg00.jpg"),
               fit: BoxFit.cover),
         ),
         child: Scaffold(

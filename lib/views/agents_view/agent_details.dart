@@ -2,12 +2,13 @@ import 'dart:math';
 import 'dart:ui';
 import 'package:Valoguide/core/constants/adMob.dart';
 import 'package:Valoguide/core/constants/params.dart';
+import 'package:Valoguide/core/store/store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:Valoguide/core/constants/data.dart';
 
 import '../footer.dart';
-import '../video_player.dart';
+import '../youtube_video_player.dart';
 
 class AgentDetails extends StatefulWidget {
   final AgentArguments args;
@@ -37,7 +38,7 @@ class _AgentDetailsState extends State<AgentDetails> {
             backgroundColor: Colors.transparent,
             title: Center(
               child: Text(
-                'Agent ' + agentNames[widget.args.agentIndex],
+                agentNames[widget.args.agentIndex] + "'s Profile",
                 style: TextStyle(fontFamily: "Orbitron"),
               ),
             ),
@@ -141,9 +142,15 @@ class _AgentDetailsState extends State<AgentDetails> {
                                   context: context,
                                   builder: (context) {
                                     final WillPopCallback onWillPopShow = () {
-                                      if (new Random().nextInt(2) ==
-                                          new Random().nextInt(2))
+                                      Store.navCounter++;
+                                      print(
+                                          '____________ navCount : --------- ' +
+                                              Store.navCounter.toString());
+
+                                      if (Store.navCounter > 5) {
+                                        Store.navCounter = 0;
                                         Ads?.showInterstitialAd();
+                                      }
                                       return Future.value(true);
                                     };
                                     final WillPopCallback onWillPopHide = () {
@@ -162,7 +169,7 @@ class _AgentDetailsState extends State<AgentDetails> {
                                               elevation: 15,
                                               child: Column(
                                                 children: <Widget>[
-                                                  VideoPlayer(
+                                                  YoutubeVideoPlayer(
                                                     clipID: agents[widget
                                                             .args.agentIndex]
                                                         .abilities[index]

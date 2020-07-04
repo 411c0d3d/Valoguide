@@ -30,7 +30,7 @@ class _MapsPageState extends State<MapsPage> {
         child: DecoratedBox(
           decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("assets/images/background/bg00.png"),
+                image: AssetImage("assets/images/background/bg00.jpg"),
                 fit: BoxFit.cover),
           ),
           child: Scaffold(
@@ -46,6 +46,29 @@ class _MapsPageState extends State<MapsPage> {
             body: SingleChildScrollView(
               child: Column(
                 children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(16.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.black12,
+                                  offset: Offset(3.0, 6.0),
+                                  blurRadius: 10.0)
+                            ]),
+                        child: AspectRatio(
+                          aspectRatio: (MediaQuery.of(context).size.width) /
+                              (MediaQuery.of(context).size.height / 3.5),
+                          child: Image.asset(
+                              'assets/images/legends/mapsLegend.jpg',
+                              fit: BoxFit.fill),
+                        ),
+                      ),
+                    ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: GestureDetector(
@@ -70,7 +93,7 @@ class _MapsPageState extends State<MapsPage> {
                               ]),
                           child: AspectRatio(
                             aspectRatio: (MediaQuery.of(context).size.width) /
-                                (MediaQuery.of(context).size.height / 3),
+                                (MediaQuery.of(context).size.height / 3.5),
                             child: Stack(
                               fit: StackFit.expand,
                               children: <Widget>[
@@ -145,7 +168,7 @@ class _MapsPageState extends State<MapsPage> {
                               ]),
                           child: AspectRatio(
                             aspectRatio: (MediaQuery.of(context).size.width) /
-                                (MediaQuery.of(context).size.height / 3),
+                                (MediaQuery.of(context).size.height / 3.5),
                             child: Stack(
                               fit: StackFit.expand,
                               children: <Widget>[
@@ -219,7 +242,7 @@ class _MapsPageState extends State<MapsPage> {
                               ]),
                           child: AspectRatio(
                             aspectRatio: (MediaQuery.of(context).size.width) /
-                                (MediaQuery.of(context).size.height / 3),
+                                (MediaQuery.of(context).size.height / 3.5),
                             child: Stack(
                               fit: StackFit.expand,
                               children: <Widget>[
@@ -293,7 +316,7 @@ class _MapsPageState extends State<MapsPage> {
                               ]),
                           child: AspectRatio(
                             aspectRatio: (MediaQuery.of(context).size.width) /
-                                (MediaQuery.of(context).size.height / 3),
+                                (MediaQuery.of(context).size.height / 3.5),
                             child: Stack(
                               fit: StackFit.expand,
                               children: <Widget>[

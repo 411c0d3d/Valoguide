@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:Valoguide/core/constants/adMob.dart';
+import 'package:Valoguide/core/store/store.dart';
 import 'package:Valoguide/views/footer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -27,8 +28,12 @@ class _PostDetailsState extends State<PostDetails> {
   @override
   Widget build(BuildContext context) {
     final WillPopCallback onWillPop = () {
-      if (new Random().nextInt(2) == new Random().nextInt(2))
+      Store.navCounter++;
+      print('____________ navCount : --------- ' + Store.navCounter.toString());
+      if (Store.navCounter > 5) {
+        Store.navCounter = 0;
         Ads?.showInterstitialAd();
+      }
       return Future.value(true);
     };
     return WillPopScope(
@@ -36,7 +41,7 @@ class _PostDetailsState extends State<PostDetails> {
       child: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/images/background/bg00.png"),
+              image: AssetImage("assets/images/background/bg00.jpg"),
               fit: BoxFit.cover),
         ),
         child: Scaffold(
@@ -70,7 +75,7 @@ class _PostDetailsState extends State<PostDetails> {
                         child: (widget.args.post.cover != '')
                             ? FadeInImage.assetNetwork(
                                 placeholder:
-                                    "assets/images/background/loading.png",
+                                    "assets/images/background/loading.jpg",
                                 image: widget.args.post.cover,
                                 fit: BoxFit.cover)
                             : (widget.args.post.figure != '')
@@ -78,11 +83,11 @@ class _PostDetailsState extends State<PostDetails> {
                                     padding: const EdgeInsets.all(5.0),
                                     child: FadeInImage.assetNetwork(
                                         placeholder:
-                                            "assets/images/background/loading.png",
+                                            "assets/images/background/loading.jpg",
                                         image: widget.args.post.figure,
                                         fit: BoxFit.cover))
                                 : Image.asset(
-                                    "assets/images/newsCovers/cover${Random().nextInt(5).toString()}.jpg"),
+                                    "assets/images/mapsCovers/cover.jpg"),
                       ),
                     ),
                     Row(
@@ -128,7 +133,7 @@ class _PostDetailsState extends State<PostDetails> {
                           padding: const EdgeInsets.all(5),
                           child: FadeInImage.assetNetwork(
                               placeholder:
-                                  "assets/images/background/loading.png",
+                                  "assets/images/background/loading.jpg",
                               image: widget.args.post.figure,
                               fit: BoxFit.cover))
                   ],

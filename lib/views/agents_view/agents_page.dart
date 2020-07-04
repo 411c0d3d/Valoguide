@@ -40,7 +40,7 @@ class _AgentsPageState extends State<AgentsPage> {
         child: DecoratedBox(
           decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("assets/images/background/bg00.png"),
+                image: AssetImage("assets/images/background/bg00.jpg"),
                 fit: BoxFit.cover),
           ),
           child: Scaffold(
@@ -54,78 +54,94 @@ class _AgentsPageState extends State<AgentsPage> {
               ),
             ),
             backgroundColor: Colors.transparent,
-            body: Column(
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Text("Agents",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize:
-                                  (SizeConfig.blockSizeVertical * 36.0) / 10,
-                              fontFamily: "Montserrat",
-                              letterSpacing: 1.0,
-                            )),
+            body: SingleChildScrollView(
+              child: Container(
+                height: MediaQuery.of(context).size.height * 0.98,
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Color(0xFF00FFA4),
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            child: Center(
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal:
+                                        (SizeConfig.blockSizeHorizontal * 3),
+                                    vertical: 6.0),
+                                child: Text("Inspect Agent Profile",
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold)),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Color(0xFF00FFA4),
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                        child: Center(
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal:
-                                    (SizeConfig.blockSizeHorizontal * 3),
-                                vertical: 6.0),
-                            child: Text("Inspect Agent Profile",
-                                style: TextStyle(color: Colors.black)),
+                    ),
+                    Expanded(
+                      flex: 8,
+                      child: Stack(
+                        children: <Widget>[
+                          CardScrollWidget(currentPage),
+                          Positioned.fill(
+                            child: PageView.builder(
+                              itemCount: agentsImages.length,
+                              controller: controller,
+                              reverse: true,
+                              itemBuilder: (context, index) {
+                                return GestureDetector(
+                                    behavior: HitTestBehavior.translucent,
+                                    onTap: () {
+                                      RoutArgument routArgument =
+                                          RoutArgument();
+                                      routArgument.agentArguments =
+                                          AgentArguments(index);
+                                      Navigator.pushNamed(
+                                          context, '/agentDetails',
+                                          arguments: routArgument);
+                                    },
+                                    child: Container());
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Flexible(
+                      flex: 6,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(16.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.black12,
+                                      offset: Offset(3.0, 6.0),
+                                      blurRadius: 10.0)
+                                ]),
+                            child: AspectRatio(
+                              aspectRatio: (MediaQuery.of(context).size.width) /
+                                  (MediaQuery.of(context).size.height / 3),
+                              child: Image.asset(
+                                  'assets/images/legends/agentsLegend.jpg',
+                                  fit: BoxFit.cover),
+                            ),
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                Expanded(
-                  flex: 7,
-                  child: Stack(
-                    children: <Widget>[
-                      CardScrollWidget(currentPage),
-                      Positioned.fill(
-                        child: PageView.builder(
-                          itemCount: agentsImages.length,
-                          controller: controller,
-                          reverse: true,
-                          itemBuilder: (context, index) {
-                            return GestureDetector(
-                                behavior: HitTestBehavior.translucent,
-                                onTap: () {
-                                  RoutArgument routArgument = RoutArgument();
-                                  routArgument.agentArguments =
-                                      AgentArguments(index);
-                                  Navigator.pushNamed(context, '/agentDetails',
-                                      arguments: routArgument);
-                                },
-                                child: Container());
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+              ),
             ),
             bottomNavigationBar: Footer(),
           ),

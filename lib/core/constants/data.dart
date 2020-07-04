@@ -1,6 +1,26 @@
 import 'dart:ui';
 
 import 'package:Valoguide/core/models/newsList_model.dart';
+import 'package:flutter/material.dart';
+
+Color mapColor(mapName) {
+  var mapColors = [Colors.amber, Colors.green, Colors.pink, Colors.cyan];
+  switch (mapName.toLowerCase()) {
+    case 'split':
+      return mapColors[3];
+    case 'bind':
+      return mapColors[0];
+    case 'ascent':
+      return mapColors[2];
+    case 'haven':
+      return mapColors[1];
+    default:
+      {
+        print("Invalid map");
+      }
+      return Colors.transparent;
+  }
+}
 
 class WeaponArguments {
   final String weaponType;
@@ -161,19 +181,19 @@ final List<Agent> agents = [
             'C',
             "EQUIP a Boom Bot. FIRE will deploy the bot, causing it to travel in a straight line on the ground, bouncing off walls. The Boom Bot will lock on to any enemies in it frontal cone and chase them, exploding for heavy damage if it reaches them."),
         Ability(
-            'Paint Shells',
+            'Blast Pack',
             '200',
             '2',
             'assets/images/agents/abilities/charges/2.png',
-            '-RUgeNH7Cuw',
+            'yz9x4Ypf0SI',
             'Q',
             "INSTANTLY throw a Blast Pack that will stick to surfaces. RE-USE the ability after deployment to detonate, damaging and moving anything hit."),
         Ability(
-            'Blast Pack',
+            'Paint Shells',
             'Free',
             '1',
             'assets/images/agents/abilities/charges/1.png',
-            'yz9x4Ypf0SI',
+            '-RUgeNH7Cuw',
             'E',
             "EQUIP a cluster grenade. FIRE to throw the grenade, which does damage and creates sub-munitions, each doing damage to anyone in their range."),
         Ability(
@@ -559,6 +579,10 @@ List<dynamic> maps = [
     'defenders': [
       "\t\t\tPoint A is the one in the northeastern part of the map (again from the point of view of the attackers). It is fairly open, although there are boxes and nooks and crannies to hide in as a defender. A wooden platform will even give you some height, or the possibility to hide underneath.\n\n\t\t\t\tFrom the attackers' point of view, there are three entry points. The first two will ask you to go through the middle line to get to the point, either through the south-western part of the point or around the wooden platform. The third option will be to force your way through the small corridor that leads to the main entrance of the point to the south.",
       "\t\t\tThe second point of Ascent, B is a bit special because the Spike's landing zone is below the rest of the map. You'll have several hiding places where you can take lines and surprise enemies. You can also go to the balcony in the eastern part of the square to get some height and watch the main entrance.\n\n\t\t\t\tAgain, you will have three entrances as an attacker on this second point and again, two will ask you to go through the middle and the famous central square on the map. You will then be able to exit at the level of the balcony we have just talked about or go all the way around and arrive from the north. Finally, you can try to force your way through the main entrance to the south. Once the Spike is down, you will only have two lines to watch for to prevent the enemies from defusing it, a large building occupying the central part.",
+    ],
+    'mapCovers': [
+      "assets/images/mapsCovers/ascent-a.jpg",
+      "assets/images/mapsCovers/ascent-b.jpg"
     ]
   },
   {
@@ -574,6 +598,11 @@ List<dynamic> maps = [
       "\t\t\tDefenders first this time: On A-Site, Heaven gives you eyes on all entry points to the site: Ramp via A-Long and Towers via A-Short. Be mindful though, because Heaven will also be the first spot attackers check upon entering A-Site and you can be wall-banged. It’s still always a good idea to have one person up on Heaven though.\n\n\t\t\t\tThis is best teamed up with someone taking cover by the A-Box and covering the Towers entryway, so that the agent on Heaven can fully focus on anyone coming through A-Long. You can also combine that with a third person roaming A Tunnel to support on A-Site while also keeping an eye on B.\n\n\t\t\t\tIt’s good to always have two people on A, as Heaven is really best suited to hold A Long, which often leaves Ramp open. ",
       "\t\t\tOn B you should only have one person - either in Back B or A-Link, especially if you have someone on C-Site covering C Link and acting as a roaming defender for B & C.As B only has one entryway, defending it from just A -Link or C-Link can be good enough. Again, Cypher is really well suited for this job, as he can roam safely with Spycam and Trapwire.\n\n\t\t\t\tIf the attackers do go for B, all you need is good communication as B is an easy rotate for both A & C defenders.",
       "\t\t\tAs defense, you can hold Plat - a metal box on the right side of the site - as you have eyes on attackers coming through Connector via Garage and you can also hold an angle into C-Long. However, the angle you have on C-Long from Plat is admittedly not that great.\n\n\t\t\t\tThe better play here is to use the spot at the far end of the C-Site - behind the site-box - which gives you two much better angles on C-Long via the left and right side. The right side, Logs, also provides a good angle on Connector. Thus, from setting yourself up behind the site-box, you can cover both attacking entryways onto the site.\n\n\t\t\t\tThis is ideally combined with a second agent occupying C-Link & C-Window. Be careful here though: The walls on C-Window are bangable - which can also be used to your advantage. An agent like Cypher is perfect on C-Link & C-Window: He can use his Spycam and Trapwire for vision and roam between C & B-Site - as long as someone is stationed on C-Site and surveying C-Long.\n\n\t\t\t\tTwo people should be enough to hold down C. If you’re feeling really confident, a good Cypher can even lock down C-Site on his own with a well-placed Spycam on C-Long and a Trapwire on Garage."
+    ],
+    'mapCovers': [
+      "assets/images/mapsCovers/haven-a.jpg",
+      "assets/images/mapsCovers/haven-b.jpg",
+      "assets/images/mapsCovers/haven-c.jpg"
     ]
   },
   {
@@ -587,6 +616,10 @@ List<dynamic> maps = [
     'defenders': [
       "\t\t\tHeaven is definitely a prime spot on defense as it offers visibility on all entries to A-Site. Ideally, you have someone with an Operator up here. This makes Heaven your primary spot and anchor for defense. Below you set up the support for Heaven: Behind the site-boxes and/or Truck you can move around to have good angles onto A-Short and Showers. Even better though is setting up right below Heaven: From here you have visibility on both Showers and A-Short without moving. Careful however: When you peek on Showers (that’s an odd little sentence), you’re vulnerable to an attack for A-Short unless you move to use the site boxes for cover.\n\n\t\t\t\tShowers is perfect for shotgun eco rounds: It only has one entry way and you can hug the wall and play the corners with your shotty.\n\n\t\t\t\tWhile contesting the teleporter on B is crucial, contesting A-Port is much less important as the teleport itself covers less distance. Also: If the enemy team does teleport, don’t necessarily chase after them immediately. Often it’s better to rotate to B through your spawn. This might catch the enemy off guard, rather than you falling into their trap by teleporting after them. ",
       "\t\t\tLet’s move through the Bind map from left to right: B has two entryways for the attackers, Hookah & B-Window as well as B-Long & Garden. A good strategy for the defense is to plant someone to the left of B Site at B-Cubby in order to lock down anybody coming through B-Long. While you can peek into Hookah from here, you expose yourself while you do, so peek with caution (always peek with caution, life lessons here, folks).\n\n\t\t\t\tAnother good spot on B is defending from behind the site box: From here you can defend Garden as well as Hookah.\n\n\t\t\t\tDefending from way back and shooting out the opening on B-Hall is not preferable as you have no eyes on who is coming via B-Long and can’t stop the attackers from planting.\n\n\t\t\t\tHowever, B-Elbow is a solid spot and gives you the drop on anyone coming onto the site via Garden. Also, any peekers from B-Window are also within your crosshairs with just a tiny flick. The downside here on B-Elbow is that you have no cover.\n\n\t\t\t\tAnother tactic is to set one defender up inside Hookah, as attackers have to check a lot of angles when entering, which you can use to your advantage and stop them before they even get close to B-Site. On Eco rounds, you can use a shotgun in Hookah as it is all close-quarters in there and you’ll have the drop on most attackers entering.\n\n\t\t\t\tThe priority on defense is to defend B-Long as it gives the enemy access to the teleporter on B-Port, which gives them a direct and immediate link to the other side of the map."
+    ],
+    'mapCovers': [
+      "assets/images/mapsCovers/bind-a.jpg",
+      "assets/images/mapsCovers/bind-b.jpg"
     ]
   },
   {
@@ -602,6 +635,11 @@ List<dynamic> maps = [
       "\t\t\tThere are two ways to defend A-Site on Split - either aggressively or more conservatively. The aggressive way is to defend and contend the corners leading onto the site by taking A-Ramp and setting up on A-Main. The alternative is to play A more defensively and use the on-site angles from Screens to contest the site. Screens gives you safe view on both entryways to A: Heaven/Rafters and A-Main.\n\n\t\t\t\tSince there is almost no cover on A-Site, setting up on Screens is a really safe way to defend, especially when holding the off-angle.\n\n\t\t\t\tAnother option is to hide behind the sign in the back of the actual A Spike site and surprise wannabe planters. It’s important to keep in mind though, that the sign is fully bangable and doesn’t provide safe cover or escape options. Some players might even preemptively empty a clip into the sign.",
       "\t\t\tA solid tactic on Split is to only have one player anchor on B-Site and have two players on middle and two on A. The main reason for that being that the middle players can rotate to B really quickly and that B-Site has a lot of defensive hiding spots.\n\n\t\t\t\tAs a sole B anchor, you have to play it safe - not too much peeking and always ask for help as soon as you need it: It’s a very fast rotate from Mid to B.\n\n\t\t\t\tThere are a lot of angles for the defender to hold and lots of cover to use. Essentially you only have to cover the bottleneck from B-Main leading to B-Site, which can be done from just about any cover: You can set up behind or up on one of the many boxes or below B-Heaven or B-Rafters. You really have to play the angles here and make sure you can get from cover to cover safely. Also, be extra mindful of cover with bangable walls.\n\n\t\t\t\tAttackers will never know where to look because there are a lot of angles to check. It’ll be hard to find you and you might get the drop on someone. Plus, the attackers careful approach might cause them to waste a lot of time, so try to amplify that as much as possible.",
       "\t\t\tAny competent defense will be making sure to not lose Mid, so its important as attackers to at least contend and keep the defenders on Mid busy and away from your teammates who are trying to plant. Ideally, you use your abilities to get the defenders to peek and/or leave cover.\n\n\t\t\t\tAgents like Breach with all his wallbang utility are well suited here, as most of the time the defense will just be behind cover, waiting for you to come through the bottleneck. Whatever you can do to get the defense to leave the safety of their cover and engage early is what you’re going for.\n\n\t\t\t\tAn odd tactic here is that one attacker will go for the ultimate orb that’s in clear sight on Bottom Mid and try to bait defenders to attack him. This only works with good communication though: You need to have a teammate with solid aim picking of greedy, peeking defenders or this plan is just a suicide mission.\n\n\t\t\t\tMost of the time you should at least have two attackers covering Mid - one coming from Sewer and one from B-Link. You can then have one peeking from each side - one peeking Mid Mail and the other Mid Vent. If there is no one in Mid Vent, you can rotate over and attack the Mid Mail together - or vice versa - to maybe gain the advantage. Once you capture Mid, you can set the tempo for the entire match: Rotating onto B becomes almost instant and the defense can quickly get overwhelmed since they don’t have the advantage in holding down the three bottlenecks anymore.\n\n\t\t\t\tA-Site doesn’t open up quite as much though, as the defenders still have a solid defensive advantage in covering the ropes in Mid Vent. Bonus tip: Don’t forget that you still have good accuracy while on the ropes."
+    ],
+    'mapCovers': [
+      "assets/images/mapsCovers/split-a.jpg",
+      "assets/images/mapsCovers/split-b.jpg",
+      "assets/images/mapsCovers/split-mid.jpg"
     ]
   },
 ];

@@ -1,7 +1,7 @@
 name: Valoguide
 description: A valorant companion App for the community.
 
-version: 1.0.0+7
+version: 1.2.0+10
 
 environment:
   sdk: ">=2.2.2 <3.0.0"
@@ -12,6 +12,8 @@ dependencies:
   configurable_expansion_tile: ^1.0.0
   flutter_launcher_icons: ^0.7.5
   youtube_player_flutter: ^7.0.0+3
+  video_player: ^0.10.11+1
+  chewie: ^0.9.10
   flutter_cache_manager: ^1.4.0
   photo_view: ^0.9.2
   firebase_admob: ^0.9.3+2
@@ -50,8 +52,10 @@ flutter:
     - assets/images/background/
     - assets/images/dashboard/
     - assets/images/maps/
-    - assets/images/newsCovers/
+    - assets/images/legends/
+    - assets/images/mapsCovers/
     - assets/icons/
+    - assets/proTipsData/
 
   # An image asset can refer to one or more resolution-specific "variants", see
 
