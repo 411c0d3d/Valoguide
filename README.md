@@ -1,19 +1,15 @@
-# Valoguide
+# Valoguide : everything about eSport VALORANT
 
-A new Flutter project.
+Built using Flutter SDK 🚀
 
-## Getting Started
+!🚧 Hidden from the store temporarily<img src="https://github.com/411c0d3d/Valoguide/blob/master/figures/posterx.png" width="250" height="400" />
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+Code and documentation copyright 2021 by salah-411. Code released under the MIT License.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+|<img src="https://github.com/411c0d3d/Valoguide/blob/master/figures/05.png" width="250" height="450" /> | <img src="https://github.com/411c0d3d/Valoguide/blob/master/figures/02.png" width="250" height="450" /> | <img src="https://github.com/411c0d3d/Valoguide/blob/master/figures/04.png" width="250" height="450" /> |
+|:---:|:---:|:---:|
+|<img src="https://github.com/411c0d3d/Valoguide/blob/master/figures/06.png" width="250" height="450" /> | <img src="https://github.com/411c0d3d/Valoguide/blob/master/figures/03.png" width="250" height="450" /> | <img src="https://github.com/411c0d3d/Valoguide/blob/master/figures/01.png" width="250" height="450" />
 
 TODO : cmd generates Launch Icons
 
